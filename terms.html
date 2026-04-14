@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service – Grivo.ai</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #f5f1ea;
+      --blue: #1f97f9;
+      --blue-dark: #0d7fd6;
+      --dark: #303031;
+      --white: #ffffff;
+      --gray: #6b6b6b;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Open Sans', sans-serif;
+      color: var(--dark);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAVIGATION ─── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      background: rgba(245, 241, 234, 0.95);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(31, 151, 249, 0.15);
+      padding: 0 52px;
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo {
+      font-family: 'Open Sans', sans-serif;
+      font-weight: 700;
+      font-size: 1.4rem;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: 1px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-logo-text { color: var(--dark); }
+    .nav-logo-blue { color: var(--blue); }
+
+    .nav-logo-img {
+      width: 28px;
+      height: 28px;
+      object-fit: contain;
+    }
+
+    .nav-cta {
+      background: var(--blue);
+      color: var(--white);
+      border: none;
+      padding: 13px 28px;
+      border-radius: 4px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      cursor: pointer;
+      text-decoration: none;
+      text-transform: uppercase;
+      transition: background 0.2s;
+    }
+
+    .nav-cta:hover { background: var(--blue-dark); }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .nav-link {
+      font-family: 'Open Sans', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--dark);
+      text-decoration: none;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
+    }
+
+    .nav-link:hover, .nav-link.active { color: var(--blue); }
+
+    /* ─── PAGE CONTENT ─── */
+    .policy-page {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 136px 48px 100px;
+    }
+
+    .policy-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+    }
+
+    .policy-title {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: clamp(2rem, 5vw, 3.2rem);
+      color: var(--dark);
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+
+    .policy-meta {
+      font-size: 0.9rem;
+      color: var(--gray);
+      margin-bottom: 16px;
+    }
+
+    .policy-business {
+      background: var(--white);
+      border: 1px solid rgba(31, 151, 249, 0.2);
+      border-left: 4px solid var(--blue);
+      border-radius: 4px;
+      padding: 20px 24px;
+      margin-bottom: 56px;
+      font-size: 0.96rem;
+      color: var(--dark);
+      line-height: 1.75;
+    }
+
+    .policy-business a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .policy-business a:hover { text-decoration: underline; }
+
+    .policy-section {
+      margin-bottom: 48px;
+    }
+
+    .policy-section h2 {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--dark);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .policy-section h2::before {
+      content: '';
+      display: inline-block;
+      width: 4px;
+      height: 20px;
+      background: var(--blue);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .policy-section p {
+      font-size: 1rem;
+      color: var(--gray);
+      line-height: 1.85;
+    }
+
+    .policy-section a {
+      color: var(--blue);
+      text-decoration: none;
+    }
+
+    .policy-section a:hover { text-decoration: underline; }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--cream);
+      border-top: 1px solid rgba(48,48,49,0.1);
+      padding: 72px 60px 48px;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 48px;
+    }
+
+    .footer-brand .logo {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 1.3rem;
+      color: var(--dark);
+      margin-bottom: 16px;
+    }
+
+    .footer-brand .logo span { color: var(--blue); }
+
+    .footer-brand p {
+      font-size: 0.96rem;
+      color: var(--gray);
+      line-height: 1.75;
+      max-width: 300px;
+    }
+
+    .footer-col h4 {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--dark);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+
+    .footer-col ul li a {
+      font-size: 0.96rem;
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul li a:hover { color: var(--blue); }
+
+    .footer-bottom {
+      max-width: 1100px;
+      margin: 48px auto 0;
+      padding-top: 28px;
+      border-top: 1px solid rgba(48,48,49,0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-bottom p { font-size: 0.9rem; color: var(--gray); }
+    .footer-bottom a { color: var(--blue); text-decoration: none; }
+
+    /* ─── SCROLL ANIMATIONS ─── */
+    .fade-up {
+      opacity: 0;
+      transform: translateY(36px);
+      transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1),
+                  transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .fade-up.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .footer-inner { grid-template-columns: 1fr; gap: 36px; }
+      nav { padding: 0 24px; }
+      footer { padding: 60px 32px 40px; }
+      .policy-page { padding: 120px 24px 80px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="index.html" class="nav-logo"><img src="grivo-logo.png" alt="Grivo.ai" class="nav-logo-img" /><span class="nav-logo-text">Grivo.<span class="nav-logo-blue">ai</span></span></a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <a href="services.html" class="nav-link">The System</a>
+      <a href="index.html#team" class="nav-link">Team</a>
+      <a href="index.html#system" class="nav-link">Pricing</a>
+    </div>
+    <a href="https://calendly.com/iamtylervelasco0818/grivo-ai-demo-call" target="_blank" rel="noopener" class="nav-cta">Book Free Demo</a>
+  </nav>
+
+  <!-- CONTENT -->
+  <div class="policy-page">
+    <p class="policy-label fade-up">Legal</p>
+    <h1 class="policy-title fade-up">Terms of Service</h1>
+    <p class="policy-meta fade-up">Effective: April 2026</p>
+
+    <div class="policy-business fade-up">
+      <strong>Tyler Velasco, doing business as Grivo.ai</strong><br />
+      2699 Shellgate Cir, Hayward, CA 94545, United States<br />
+      Phone: <a href="tel:5105714229">(510) 571-4229</a><br />
+      Email: <a href="mailto:iamtylervelasco0818@gmail.com">iamtylervelasco0818@gmail.com</a>
+    </div>
+
+    <div class="policy-section fade-up">
+      <h2>Our Services</h2>
+      <p>Grivo.ai installs and manages done-for-you Revenue Capture Systems for residential cleaning companies. Services include missed call recovery, instant lead response, lead qualification, smart follow-up, and old lead reactivation.</p>
+    </div>
+
+    <div class="policy-section fade-up">
+      <h2>Purchases and Payment</h2>
+      <p>We accept payment via Stripe. All payments are in US dollars. Founding Client plan: $297 one-time setup fee plus $197 per month, price locked permanently, limited to 3 spots. Standard plan: $497 one-time setup fee plus $297 per month. Prices are subject to change with 30 days notice.</p>
+    </div>
+
+    <div class="policy-section fade-up">
+      <h2>Subscriptions</h2>
+      <p>Your subscription automatically renews monthly. You consent to recurring charges. You may cancel at any time by contacting us. Cancellation takes effect at the end of the current billing period.</p>
+    </div>
+
+    <div class="policy-section fade-up">
+      <h2>Money-Back Guarantee</h2>
+      <p>Clients may request a full refund of their first monthly retainer payment within 30 days of service launch if not satisfied. The one-time setup fee is non-refundable after system installation is complete.</p>
+    </div>
+
+    <div class="policy-section fade-up">
+      <h2>SMS Text Messaging</h2>
+      <p>By engaging our services, you agree that end users who receive SMS messages through your system have provided consent by contacting your business phone number. Program description: Grivo.ai sends automated SMS messages including appointment reminders, lead follow-up, and booking confirmations. Opt-out: reply STOP at any time. Support: reply HELP or contact <a href="mailto:iamtylervelasco0818@gmail.com">iamtylervelasco0818@gmail.com</a>. Message and data rates may apply. Message frequency varies.</p>
+    </div>
+
+    <div class="policy-section fade-up">
+      <h2>Cancellation</h2>
+      <p>No long-term contracts. Cancel at any time with written notice. Service continues through the end of the current billing period.</p>
+    </div>
+
+    <div class="policy-section fade-up">
+      <h2>Client Responsibilities</h2>
+      <p>Clients must provide accurate business information, keep their phone number active, and use the service in compliance with all applicable laws and carrier guidelines.</p>
+    </div>
+
+    <div class="policy-section fade-up">
+      <h2>Limitation of Liability</h2>
+      <p>Grivo.ai liability is limited to the amount paid in the prior 30 days. We are not responsible for carrier delays or third-party service outages.</p>
+    </div>
+
+    <div class="policy-section fade-up">
+      <h2>Governing Law</h2>
+      <p>These terms are governed by the laws of the State of California.</p>
+    </div>
+
+    <div class="policy-section fade-up">
+      <h2>Contact</h2>
+      <p>Tyler Velasco (Grivo.ai), 2699 Shellgate Cir, Hayward, CA 94545<br />
+      Phone: <a href="tel:5105714229">(510) 571-4229</a><br />
+      Email: <a href="mailto:iamtylervelasco0818@gmail.com">iamtylervelasco0818@gmail.com</a></p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <div class="logo">Grivo<span>.ai</span></div>
+        <p>
+          We build Revenue Capture Systems for cleaning companies — automating
+          follow-ups, recovering lost leads, and turning one-time clients into
+          loyal recurring accounts.
+        </p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="index.html#system">Founding Client Plan</a></li>
+          <li><a href="index.html#system">Standard Plan</a></li>
+          <li><a href="services.html">The 5 Tools</a></li>
+          <li><a href="https://calendly.com/iamtylervelasco0818/grivo-ai-demo-call" target="_blank" rel="noopener">Book a Free Demo</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <ul>
+          <li><a href="tel:5105714229">(510) 571-4229</a></li>
+          <li><a href="https://calendly.com/iamtylervelasco0818/grivo-ai-demo-call" target="_blank" rel="noopener">Schedule a Call</a></li>
+          <li><a href="index.html#team">Meet the Team</a></li>
+          <li><a href="index.html#how">How It Works</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 Grivo.ai — All rights reserved.</p>
+      <p>Built for cleaning companies by people who get it. <a href="tel:5105714229">(510) 571-4229</a></p>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+    document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

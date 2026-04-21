@@ -100,6 +100,9 @@
 
     .nav-link:hover, .nav-link.active { color: var(--blue); }
 
+    .nav-hamburger { display: none; }
+    .nav-cta-mobile { display: none; }
+
     /* ─── SECTION BASE ─── */
     section {
       min-height: 100vh;
@@ -686,18 +689,148 @@
       .tiers-grid { max-width: 100%; }
       #hero { padding-top: 120px; }
     }
+
+    /* ─── MOBILE (≤768px) ─── */
+    @media (max-width: 768px) {
+      /* Hamburger button */
+      .nav-hamburger {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 5px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 8px;
+        z-index: 10;
+      }
+
+      .nav-hamburger span {
+        display: block;
+        width: 24px;
+        height: 2px;
+        background: var(--dark);
+        border-radius: 2px;
+        transition: transform 0.25s ease, opacity 0.25s ease;
+      }
+
+      nav.open .nav-hamburger span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+      nav.open .nav-hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+      nav.open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+      /* Hide desktop CTA; show mobile one inside drawer */
+      .nav-cta { display: none; }
+      .nav-cta-mobile {
+        display: block;
+        background: var(--blue);
+        color: var(--white);
+        border: none;
+        padding: 13px 24px;
+        border-radius: 4px;
+        font-family: 'Space Mono', monospace;
+        font-size: 0.84rem;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+        margin: 4px 0 8px;
+      }
+
+      /* Slide-down nav drawer */
+      .nav-links {
+        position: absolute;
+        top: 76px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        background: rgba(245, 241, 234, 0.98);
+        backdrop-filter: blur(8px);
+        border-bottom: 1px solid rgba(31, 151, 249, 0.18);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.32s ease;
+      }
+
+      nav.open .nav-links { max-height: 340px; }
+
+      .nav-link {
+        padding: 15px 24px;
+        width: 100%;
+        border-bottom: 1px solid rgba(31, 151, 249, 0.08);
+      }
+
+      .nav-cta-mobile { margin: 12px 24px 20px; }
+
+      /* Hero: single column, centered */
+      #hero { min-height: auto; padding-top: 100px; padding-bottom: 60px; }
+
+      .hero-inner {
+        grid-template-columns: 1fr !important;
+        padding: 0 24px;
+        text-align: center;
+        gap: 32px;
+      }
+
+      .hero-content { text-align: center; }
+
+      .hero-divider { margin: 0 auto 36px; }
+
+      .hero-cta-row { justify-content: center; }
+
+      .hero-sub { margin: 0 auto; }
+
+      .hero-logo-image img { width: clamp(180px, 65vw, 300px); }
+
+      /* Pricing grid: override inline style */
+      .tiers-grid {
+        grid-template-columns: 1fr !important;
+        max-width: 460px !important;
+      }
+
+      /* Section padding */
+      section { padding: 80px 20px 60px; }
+      #cta { padding: 64px 20px; }
+      footer { padding: 48px 20px 36px; }
+      nav { padding: 0 20px; }
+    }
+
+    /* ─── SMALL PHONES (≤400px) ─── */
+    @media (max-width: 400px) {
+      section { padding: 72px 16px 48px; }
+      #cta { padding: 52px 16px; }
+      footer { padding: 40px 16px 28px; }
+      nav { padding: 0 16px; }
+
+      .hero-brand { font-size: clamp(2.6rem, 10vw, 3.4rem); letter-spacing: -2px; }
+      .hero-tagline { font-size: 1.05rem; }
+
+      .section-title { font-size: 1.55rem; }
+      .section-sub { font-size: 1rem; margin-bottom: 48px; }
+      .cta-headline { font-size: 1.5rem; }
+      .cta-sub { font-size: 1rem; }
+
+      .tier-card { padding: 36px 24px 28px; }
+      .step-card { padding: 32px 20px; }
+    }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav>
+  <nav id="main-nav">
     <a href="#hero" class="nav-logo"><img src="grivo-logo.png" alt="Grivo.ai" class="nav-logo-img" /><span class="nav-logo-text">Grivo.<span class="nav-logo-blue">ai</span></span></a>
-    <div class="nav-links">
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="nav-links">
+      <span></span><span></span><span></span>
+    </button>
+    <div class="nav-links" id="nav-links">
       <a href="index.html" class="nav-link active">Home</a>
       <a href="services.html" class="nav-link">The System</a>
       <a href="#team" class="nav-link">Team</a>
       <a href="#system" class="nav-link">Pricing</a>
+      <a href="https://calendly.com/iamtylervelasco0818/grivo-ai-demo-call" target="_blank" rel="noopener" class="nav-cta-mobile">Book Free Demo</a>
     </div>
     <a href="#cta" class="nav-cta">Book Free Demo</a>
   </nav>
@@ -959,6 +1092,22 @@
     document.querySelectorAll('.team-grid, .tiers-grid, .steps-grid').forEach(grid => {
       grid.querySelectorAll('.fade-up').forEach((card, i) => {
         card.style.transitionDelay = (i * 0.14) + 's';
+      });
+    });
+
+    // Hamburger menu toggle
+    const nav = document.getElementById('main-nav');
+    const hamburger = nav.querySelector('.nav-hamburger');
+    hamburger.addEventListener('click', () => {
+      const isOpen = nav.classList.toggle('open');
+      hamburger.setAttribute('aria-expanded', isOpen);
+    });
+
+    // Close drawer when a nav link is clicked
+    nav.querySelectorAll('.nav-link, .nav-cta-mobile').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        hamburger.setAttribute('aria-expanded', 'false');
       });
     });
   </script>

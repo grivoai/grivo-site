@@ -123,7 +123,6 @@
       overflow: hidden;
     }
 
-    /* Decorative corner elements */
     .corner-tl, .corner-br {
       position: absolute;
       width: 280px;
@@ -142,7 +141,6 @@
       background: radial-gradient(circle at 100% 100%, var(--blue) 0%, transparent 70%);
     }
 
-    /* Dot grid decoration */
     .dot-grid {
       position: absolute;
       width: 200px; height: 200px;
@@ -154,7 +152,6 @@
     .dot-grid-bl { bottom: 60px; left: 60px; }
     .dot-grid svg { width: 100%; height: 100%; }
 
-    /* ─── HERO LAYOUT ─── */
     .hero-inner {
       position: relative;
       z-index: 1;
@@ -166,9 +163,7 @@
       padding: 0 40px 0 14%;
     }
 
-    .hero-content {
-      text-align: left;
-    }
+    .hero-content { text-align: left; }
 
     .hero-logo-image {
       display: flex;
@@ -308,67 +303,36 @@
       margin-bottom: 70px;
     }
 
-    /* ─── TEAM ─── */
-    #team {
-      background: var(--blue);
-      color: var(--white);
+    /* ─── WHAT WE HELP WITH ─── */
+    #what-we-help {
+      background: #F5F5F5;
+      min-height: unset;
+      padding: 80px 60px;
     }
 
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 32px;
-      max-width: 720px;
-      width: 100%;
-    }
-
-    .team-card {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.18);
-      border-radius: 14px;
-      overflow: hidden;
-      transition: transform 0.25s, box-shadow 0.25s;
-    }
-
-    .team-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 48px rgba(0,0,0,0.22);
-    }
-
-    .team-photo {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      display: block;
-      background: rgba(255,255,255,0.1);
-    }
-
-    .team-photo-placeholder {
-      width: 100%;
-      aspect-ratio: 4/5;
-      background: rgba(255,255,255,0.12);
+    /* ─── MISSION BLOCK ─── */
+    .mission-block {
       display: flex;
-      align-items: center;
       justify-content: center;
+      padding: 0 60px 80px;
+      background: #F5F5F5;
     }
 
-    .team-photo-placeholder svg { width: 70px; height: 70px; opacity: 0.35; }
+    .mission-inner {
+      max-width: 800px;
+      width: 100%;
+      border-left: 4px solid var(--blue);
+      padding: 28px 36px;
+      background: rgba(31, 151, 249, 0.07);
+      border-radius: 0 8px 8px 0;
+    }
 
-    .team-info { padding: 26px 24px 28px; }
-
-    .team-name {
+    .mission-inner p {
       font-family: 'Space Mono', monospace;
+      font-size: 1.08rem;
       font-weight: 700;
-      font-size: 1.18rem;
-      margin-bottom: 8px;
-    }
-
-    .team-role {
-      font-size: 0.9rem;
-      opacity: 0.7;
-      font-weight: 300;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
+      color: var(--dark);
+      line-height: 1.8;
     }
 
     /* ─── SYSTEM / SERVICE TIERS ─── */
@@ -584,6 +548,207 @@
       line-height: 1.75;
     }
 
+    /* ─── SYSTEMS (5 Tools) ─── */
+    #systems {
+      display: block;
+      min-height: unset;
+      padding: 0;
+    }
+
+    .systems-hero {
+      background: var(--cream);
+      padding: 100px 60px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-badge {
+      display: inline-block;
+      background: rgba(31, 151, 249, 0.12);
+      color: var(--blue);
+      border: 1px solid rgba(31, 151, 249, 0.35);
+      border-radius: 50px;
+      padding: 8px 22px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+
+    .page-title {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      line-height: 1.1;
+      color: var(--dark);
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .page-title span { color: var(--blue); }
+
+    .page-sub {
+      font-size: clamp(1rem, 1.8vw, 1.25rem);
+      font-weight: 300;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto 44px;
+      line-height: 1.75;
+    }
+
+    .page-cta {
+      display: inline-block;
+      background: var(--blue);
+      color: var(--white);
+      padding: 19px 42px;
+      border-radius: 4px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .page-cta:hover { background: var(--blue-dark); transform: translateY(-2px); }
+
+    .tools-wrapper > .tools-section:nth-child(odd) { background: var(--cream); }
+    .tools-wrapper > .tools-section:nth-child(even) { background: var(--white); }
+
+    .tools-section { padding: 100px 60px; }
+
+    .tool-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .tool-inner.reverse { direction: rtl; }
+    .tool-inner.reverse > * { direction: ltr; }
+
+    .tool-number {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 16px;
+      opacity: 0.85;
+    }
+
+    .tool-title {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
+      line-height: 1.2;
+      color: var(--dark);
+      letter-spacing: -0.5px;
+      margin-bottom: 20px;
+    }
+
+    .tool-body {
+      font-size: 1.1rem;
+      color: var(--gray);
+      line-height: 1.8;
+      margin-bottom: 32px;
+    }
+
+    .tool-detail {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .tool-detail-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 1rem;
+      color: var(--dark);
+      line-height: 1.5;
+    }
+
+    .tool-detail-icon {
+      flex-shrink: 0;
+      width: 22px; height: 22px;
+      margin-top: 1px;
+      color: var(--blue);
+    }
+
+    .tool-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .tool-card-visual {
+      background: var(--blue);
+      border-radius: 20px;
+      padding: 52px 44px;
+      width: 100%;
+      max-width: 420px;
+      color: var(--white);
+      box-shadow: 0 20px 60px rgba(31, 151, 249, 0.25);
+    }
+
+    .tool-card-visual.dark {
+      background: var(--dark);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    }
+
+    .tool-icon-large {
+      font-size: 3.5rem;
+      margin-bottom: 24px;
+      line-height: 1;
+    }
+
+    .tool-card-stat {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 3rem;
+      line-height: 1;
+      margin-bottom: 8px;
+    }
+
+    .tool-card-stat-label {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      font-weight: 300;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      line-height: 1.4;
+    }
+
+    .tool-card-divider {
+      height: 1px;
+      background: rgba(255,255,255,0.2);
+      margin: 28px 0;
+    }
+
+    .tool-card-tag {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
     /* ─── FOOTER ─── */
     footer {
       background: var(--cream);
@@ -667,7 +832,7 @@
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 960px) {
-      .team-grid, .tiers-grid, .steps-grid {
+      .tiers-grid, .steps-grid {
         grid-template-columns: 1fr;
         max-width: 460px;
       }
@@ -682,17 +847,21 @@
       .hero-inner { grid-template-columns: 1fr; gap: 40px; padding: 0 32px; }
       .hero-logo-image { justify-content: center; }
       .hero-logo-image img { width: clamp(220px, 60vw, 360px); }
+
+      .systems-hero { padding: 80px 32px 60px; }
+      .tools-section { padding: 70px 32px; }
+      .tool-inner { grid-template-columns: 1fr; gap: 48px; }
+      .tool-inner.reverse { direction: ltr; }
+      .tool-visual { order: -1; }
     }
 
     @media (max-width: 600px) {
-      .hero-stats { gap: 36px; }
       .tiers-grid { max-width: 100%; }
       #hero { padding-top: 120px; }
     }
 
     /* ─── MOBILE (≤768px) ─── */
     @media (max-width: 768px) {
-      /* Hamburger button */
       .nav-hamburger {
         display: flex;
         flex-direction: column;
@@ -718,7 +887,6 @@
       nav.open .nav-hamburger span:nth-child(2) { opacity: 0; transform: scaleX(0); }
       nav.open .nav-hamburger span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-      /* Hide desktop CTA; show mobile one inside drawer */
       .nav-cta { display: none; }
       .nav-cta-mobile {
         display: block;
@@ -737,7 +905,6 @@
         margin: 4px 0 8px;
       }
 
-      /* Slide-down nav drawer */
       .nav-links {
         position: absolute;
         top: 76px;
@@ -754,7 +921,7 @@
         transition: max-height 0.32s ease;
       }
 
-      nav.open .nav-links { max-height: 340px; }
+      nav.open .nav-links { max-height: 300px; }
 
       .nav-link {
         padding: 15px 24px;
@@ -764,7 +931,6 @@
 
       .nav-cta-mobile { margin: 12px 24px 20px; }
 
-      /* Hero: single column, centered */
       #hero { min-height: auto; padding-top: 100px; padding-bottom: 60px; }
 
       .hero-inner {
@@ -775,26 +941,25 @@
       }
 
       .hero-content { text-align: center; }
-
       .hero-divider { margin: 0 auto 36px; }
-
       .hero-cta-row { justify-content: center; }
-
       .hero-sub { margin: 0 auto; }
-
       .hero-logo-image img { width: clamp(180px, 65vw, 300px); }
 
-      /* Pricing grid: override inline style */
       .tiers-grid {
         grid-template-columns: 1fr !important;
         max-width: 460px !important;
       }
 
-      /* Section padding */
       section { padding: 80px 20px 60px; }
       #cta { padding: 64px 20px; }
       footer { padding: 48px 20px 36px; }
       nav { padding: 0 20px; }
+
+      #what-we-help { padding: 60px 20px; }
+      .mission-block { padding: 0 20px 60px; }
+      .tools-section { padding: 60px 20px; }
+      .systems-hero { padding: 60px 20px 48px; }
     }
 
     /* ─── SMALL PHONES (≤400px) ─── */
@@ -827,8 +992,7 @@
     </button>
     <div class="nav-links" id="nav-links">
       <a href="index.html" class="nav-link active">Home</a>
-      <a href="services.html" class="nav-link">The System</a>
-      <a href="#team" class="nav-link">Team</a>
+      <a href="#systems" class="nav-link">The System</a>
       <a href="#system" class="nav-link">Pricing</a>
       <a href="https://calendly.com/iamtylervelasco0818/grivo-ai-demo-call" target="_blank" rel="noopener" class="nav-cta-mobile">Book Free Demo</a>
     </div>
@@ -885,52 +1049,23 @@
         <img src="grivo-logo.png" alt="Grivo.ai logo" />
       </div>
 
-    </div><!-- end .hero-inner -->
-  </section>
-
-  <!-- ─── TEAM ─── -->
-  <section id="team">
-    <p class="section-label fade-up">The People Behind the System</p>
-    <h2 class="section-title fade-up">Meet the Team</h2>
-    <p class="section-sub fade-up">
-      We install done-for-you Revenue Capture Systems for home service businesses — cleaning, pest control, junk removal, detailing, and landscaping.
-    </p>
-
-    <div class="team-grid">
-      <div class="team-card fade-up">
-        <img
-          src="tyler.jpg"
-          alt="Tyler Velasco"
-          class="team-photo"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
-        <div class="team-photo-placeholder" style="display:none;">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="white"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" fill="white"/></svg>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Tyler Velasco</div>
-          <div class="team-role">Founder &amp; Technical Lead</div>
-        </div>
-      </div>
-
-      <div class="team-card fade-up">
-        <img
-          src="andrew.jpg"
-          alt="Andrew Ramirez"
-          class="team-photo"
-          onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-        />
-        <div class="team-photo-placeholder" style="display:none;">
-          <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="8" r="4" fill="white"/><path d="M4 20c0-4 3.582-7 8-7s8 3 8 7" fill="white"/></svg>
-        </div>
-        <div class="team-info">
-          <div class="team-name">Andrew Ramirez</div>
-          <div class="team-role">Co-Founder &amp; Strategy Lead</div>
-        </div>
-      </div>
-
     </div>
   </section>
+
+  <!-- ─── WHAT WE HELP WITH ─── -->
+  <section id="what-we-help">
+    <h2 class="section-title fade-up">What We Help With</h2>
+    <p class="section-sub fade-up" style="margin-bottom: 0; max-width: 700px;">
+      Cleaning companies lose booked jobs every day from missed calls, slow responses, and no follow-up. We install a Revenue Capture System that handles all of it automatically — so every lead gets a response and every opportunity gets a shot at becoming a booked job.
+    </p>
+  </section>
+
+  <!-- ─── MISSION BLOCK ─── -->
+  <div class="mission-block">
+    <div class="mission-inner fade-up">
+      <p>"Grivo installs done-for-you systems that capture every lead and convert it into a booked job. We handle the follow-up so you stay focused on the work."</p>
+    </div>
+  </div>
 
   <!-- ─── SYSTEM / SERVICE TIERS ─── -->
   <section id="system">
@@ -1026,6 +1161,204 @@
     </a>
   </section>
 
+  <!-- ─── SYSTEMS (5 Tools) ─── -->
+  <section id="systems">
+    <div class="systems-hero">
+      <div class="corner-tl"></div>
+      <div class="corner-br"></div>
+      <div class="page-badge fade-up">The Revenue Capture System</div>
+      <h2 class="page-title fade-up">5 Tools. One System.<br/><span>Zero Leads Left Behind.</span></h2>
+      <p class="page-sub fade-up">
+        Every tool works together automatically. Once installed, your system captures, follows up, and converts leads around the clock — without you touching a thing.
+      </p>
+      <a href="https://calendly.com/iamtylervelasco0818/grivo-ai-demo-call" target="_blank" rel="noopener" class="page-cta fade-up">Book a Free Demo</a>
+    </div>
+
+    <div class="tools-wrapper">
+
+      <!-- Tool 1: Missed Call Recovery -->
+      <div class="tools-section">
+        <div class="tool-inner">
+          <div class="tool-content fade-up">
+            <div class="tool-number">Tool 01</div>
+            <h3 class="tool-title">Missed Call<br/>Text-Back</h3>
+            <p class="tool-body">
+              When a potential client calls and you don't answer, they move on. Our system instantly texts them back so they stay engaged while you finish the job.
+            </p>
+            <div class="tool-detail">
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Fires within seconds of a missed call — before they dial your competitor
+              </div>
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Personalized message that opens a real conversation
+              </div>
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Works 24/7 — even at 11pm on a Sunday
+              </div>
+            </div>
+          </div>
+          <div class="tool-visual fade-up">
+            <div class="tool-card-visual">
+              <div class="tool-icon-large">📞</div>
+              <div class="tool-card-stat">~80%</div>
+              <div class="tool-card-stat-label">of callers don't leave a voicemail — they just move on</div>
+              <div class="tool-card-divider"></div>
+              <span class="tool-card-tag">Instant Text-Back</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool 2: Instant Lead Response -->
+      <div class="tools-section">
+        <div class="tool-inner reverse">
+          <div class="tool-content fade-up">
+            <div class="tool-number">Tool 02</div>
+            <h3 class="tool-title">Instant Lead<br/>Response</h3>
+            <p class="tool-body">
+              Speed wins. When a new lead comes in, we respond within 60 seconds — day or night — so you're always first.
+            </p>
+            <div class="tool-detail">
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Responds to web forms, Facebook leads, Google inquiries, and more
+              </div>
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                The first business to respond wins the job — we make sure that's you
+              </div>
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Feels personal, never robotic
+              </div>
+            </div>
+          </div>
+          <div class="tool-visual fade-up">
+            <div class="tool-card-visual dark">
+              <div class="tool-icon-large">⚡</div>
+              <div class="tool-card-stat">&lt; 60s</div>
+              <div class="tool-card-stat-label">average response time — faster than any human team</div>
+              <div class="tool-card-divider"></div>
+              <span class="tool-card-tag">Always First to Respond</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool 3: AI Lead Qualification -->
+      <div class="tools-section">
+        <div class="tool-inner">
+          <div class="tool-content fade-up">
+            <div class="tool-number">Tool 03</div>
+            <h3 class="tool-title">AI Lead<br/>Qualification</h3>
+            <p class="tool-body">
+              Not every inquiry is worth your time. We filter serious leads from tire-kickers before they ever reach you.
+            </p>
+            <div class="tool-detail">
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Asks the right questions to identify serious buyers automatically
+              </div>
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Only sends you leads that are ready to book
+              </div>
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Saves you hours of back-and-forth with unqualified prospects
+              </div>
+            </div>
+          </div>
+          <div class="tool-visual fade-up">
+            <div class="tool-card-visual">
+              <div class="tool-icon-large">🎯</div>
+              <div class="tool-card-stat">Only</div>
+              <div class="tool-card-stat-label">qualified, ready-to-book leads ever reach your phone</div>
+              <div class="tool-card-divider"></div>
+              <span class="tool-card-tag">Smart Filtering</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool 4: Smart Follow-Up Engine -->
+      <div class="tools-section">
+        <div class="tool-inner reverse">
+          <div class="tool-content fade-up">
+            <div class="tool-number">Tool 04</div>
+            <h3 class="tool-title">Smart Follow-Up<br/>Engine</h3>
+            <p class="tool-body">
+              Most leads don't book on first contact. We automatically follow up over 7 days so no opportunity slips through.
+            </p>
+            <div class="tool-detail">
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Multi-touch sequence across text, email, and voicemail
+              </div>
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Stops automatically the moment a lead responds or books
+              </div>
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Converts leads that would have been forgotten in 24 hours
+              </div>
+            </div>
+          </div>
+          <div class="tool-visual fade-up">
+            <div class="tool-card-visual dark">
+              <div class="tool-icon-large">🔁</div>
+              <div class="tool-card-stat">7 Days</div>
+              <div class="tool-card-stat-label">of automatic follow-up so zero leads fall through the cracks</div>
+              <div class="tool-card-divider"></div>
+              <span class="tool-card-tag">Set It &amp; Forget It</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tool 5: Old Lead Reactivation -->
+      <div class="tools-section">
+        <div class="tool-inner">
+          <div class="tool-content fade-up">
+            <div class="tool-number">Tool 05</div>
+            <h3 class="tool-title">Old Lead<br/>Reactivation</h3>
+            <p class="tool-body">
+              Your past customers and cold leads are sitting on money. We re-engage them with targeted messages to generate new bookings from contacts you already have.
+            </p>
+            <div class="tool-detail">
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Turns your existing contact list into immediate revenue
+              </div>
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                Re-engages past clients who haven't booked in months
+              </div>
+              <div class="tool-detail-item">
+                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                No ad spend needed — profits come from contacts you already own
+              </div>
+            </div>
+          </div>
+          <div class="tool-visual fade-up">
+            <div class="tool-card-visual">
+              <div class="tool-icon-large">💰</div>
+              <div class="tool-card-stat">$0</div>
+              <div class="tool-card-stat-label">in ad spend — new revenue from contacts you already have</div>
+              <div class="tool-card-divider"></div>
+              <span class="tool-card-tag">Hidden Revenue Unlocked</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end .tools-wrapper -->
+  </section>
+
   <!-- ─── FOOTER ─── -->
   <footer>
     <div class="footer-inner">
@@ -1041,7 +1374,7 @@
         <ul>
           <li><a href="#system">Founding Client Plan</a></li>
           <li><a href="#system">Standard Plan</a></li>
-          <li><a href="services.html">The 5 Tools</a></li>
+          <li><a href="#systems">The 5 Tools</a></li>
           <li><a href="#cta">Book a Free Demo</a></li>
         </ul>
       </div>
@@ -1051,7 +1384,6 @@
         <ul>
           <li><a href="tel:5105714229">(510) 571-4229</a><br /><span style="font-size:11px;color:#9a9a9a;line-height:1.6;display:block;margin-top:4px;">By texting this number, you agree to receive SMS updates about your inquiry. Msg &amp; data rates may apply. Reply STOP to unsubscribe.</span></li>
           <li><a href="https://calendly.com/iamtylervelasco0818/grivo-ai-demo-call" target="_blank" rel="noopener">Schedule a Call</a></li>
-          <li><a href="#team">Meet the Team</a></li>
           <li><a href="#how">How It Works</a></li>
         </ul>
       </div>
@@ -1064,7 +1396,6 @@
   </footer>
 
   <script>
-    // Scroll-triggered fade-up animations
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1075,14 +1406,18 @@
 
     document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-    // Stagger cards inside grids
-    document.querySelectorAll('.team-grid, .tiers-grid, .steps-grid').forEach(grid => {
+    document.querySelectorAll('.tiers-grid, .steps-grid').forEach(grid => {
       grid.querySelectorAll('.fade-up').forEach((card, i) => {
         card.style.transitionDelay = (i * 0.14) + 's';
       });
     });
 
-    // Hamburger menu toggle
+    document.querySelectorAll('.tool-inner').forEach(inner => {
+      inner.querySelectorAll('.fade-up').forEach((el, i) => {
+        el.style.transitionDelay = (i * 0.1) + 's';
+      });
+    });
+
     const nav = document.getElementById('main-nav');
     const hamburger = nav.querySelector('.nav-hamburger');
     hamburger.addEventListener('click', () => {
@@ -1090,7 +1425,6 @@
       hamburger.setAttribute('aria-expanded', isOpen);
     });
 
-    // Close drawer when a nav link is clicked
     nav.querySelectorAll('.nav-link, .nav-cta-mobile').forEach(link => {
       link.addEventListener('click', () => {
         nav.classList.remove('open');

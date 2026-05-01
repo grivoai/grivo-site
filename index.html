@@ -300,7 +300,7 @@
     #what-we-help {
       background: var(--cream);
       min-height: unset;
-      padding: 60px 60px;
+      padding: 80px 60px;
     }
 
     /* ─── MISSION BLOCK ─── */
@@ -951,6 +951,8 @@
       nav { padding: 0 20px; }
 
       #what-we-help { padding: 60px 20px; }
+      #what-we-help .fade-up + .fade-up { margin-top: 48px; }
+      #what-we-help > div { grid-template-columns: 1fr !important; }
       .mission-block { padding: 0 20px 60px; }
       .tools-section { padding: 60px 20px; }
       .systems-hero { padding: 60px 20px 48px; }
@@ -1042,21 +1044,27 @@
     </div>
   </section>
 
-  <!-- ─── WHAT WE DO ─── -->
+  <!-- ─── WHAT WE DO + MISSION ─── -->
   <section id="what-we-help">
-    <h2 class="section-title fade-up">What We Do</h2>
-    <p class="section-sub fade-up" style="margin-bottom: 0; max-width: 700px;">
-      Home service businesses lose booked jobs every day — missed calls, slow responses, leads that never get followed up on. We install a Revenue Capture System that handles all of it automatically, so every opportunity actually has a shot at becoming a paying job.
-    </p>
-  </section>
+    <div style="max-width:1100px; width:100%; display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start;">
 
-  <!-- ─── MISSION BLOCK ─── -->
-  <div class="mission-block">
-    <p style="font-family:'Space Mono',monospace; font-size:0.92rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--blue); margin-bottom:12px; opacity:0.85; max-width:800px; width:100%;">Our Mission</p>
-    <div class="mission-inner fade-up">
-      <p>"Grivo installs done-for-you systems that capture every lead and convert it into a booked job. We handle the follow-up so you stay focused on the work."</p>
+      <!-- Left: What We Do -->
+      <div class="fade-up">
+        <p style="font-family:'Space Mono',monospace; font-size:0.82rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--blue); margin-bottom:16px; opacity:0.85;">What We Do</p>
+        <h2 style="font-family:'Space Mono',monospace; font-weight:700; font-size:clamp(1.6rem,2.8vw,2.4rem); color:var(--dark); line-height:1.2; letter-spacing:-0.5px; margin-bottom:24px;">Home Service Businesses Lose Revenue Every Day.</h2>
+        <p style="font-size:1.15rem; color:var(--gray); line-height:1.85; margin-bottom:20px;">Missed calls go unanswered. New leads sit for hours before anyone responds. Past customers never hear from you again. Every one of those moments is a booked job that walked out the door.</p>
+        <p style="font-size:1.15rem; color:var(--gray); line-height:1.85;">We install a Revenue Capture System that handles all of it automatically — so every missed call gets a response, every new lead hears from you in under 60 seconds, and no opportunity slips through the cracks.</p>
+      </div>
+
+      <!-- Right: Our Mission -->
+      <div class="fade-up" style="border-left:4px solid var(--blue); padding:36px 40px; background:rgba(31,151,249,0.06); border-radius:0 12px 12px 0;">
+        <p style="font-family:'Space Mono',monospace; font-size:0.82rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--blue); margin-bottom:20px; opacity:0.85;">Our Mission</p>
+        <p style="font-family:'Space Mono',monospace; font-size:1.2rem; font-weight:700; color:var(--dark); line-height:1.9; margin-bottom:28px;">"We exist to make sure no home service business loses a job just because they were busy doing the work."</p>
+        <p style="font-size:1.05rem; color:var(--gray); line-height:1.8;">Grivo installs done-for-you systems that capture every lead and convert it into a booked job. We handle the follow-up, the responses, and the reactivation — so you can stay focused on delivering great work.</p>
+      </div>
+
     </div>
-  </div>
+  </section>
 
   <!-- ─── HOW IT WORKS ─── -->
   <section id="how">

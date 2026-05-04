@@ -542,7 +542,15 @@
 
     /* ─── TAB PANELS ─── */
     .tool-panel { display: none; }
-    .tool-panel.active { display: block; }
+    .tool-panel.active {
+      display: block;
+      animation: tool-panel-in 0.3s ease-out;
+    }
+
+    @keyframes tool-panel-in {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
 
     .tool-inner {
       max-width: 1100px;

@@ -455,10 +455,94 @@
 
     .page-cta:hover { background: var(--blue-dark); transform: translateY(-2px); }
 
-    .tools-wrapper > .tools-section:nth-child(odd) { background: var(--cream); }
-    .tools-wrapper > .tools-section:nth-child(even) { background: var(--white); }
+    .tools-section { padding: 70px 60px; background: var(--cream); }
 
-    .tools-section { padding: 70px 60px; }
+    /* ─── PACKAGE SUMMARY ─── */
+    .package-summary {
+      background: var(--cream);
+      padding: 60px 60px 40px;
+      text-align: center;
+    }
+
+    .package-summary-inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .package-name {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: clamp(1.8rem, 3vw, 2.6rem);
+      color: var(--dark);
+      letter-spacing: -0.5px;
+      line-height: 1.2;
+      margin-bottom: 18px;
+    }
+
+    .package-subtitle {
+      font-size: clamp(1rem, 1.6vw, 1.18rem);
+      color: var(--gray);
+      line-height: 1.7;
+      max-width: 660px;
+      margin: 0 auto 36px;
+    }
+
+    .package-pills {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .package-pill {
+      display: inline-block;
+      background: rgba(31, 151, 249, 0.1);
+      color: var(--blue);
+      border: 1px solid rgba(31, 151, 249, 0.32);
+      border-radius: 50px;
+      padding: 10px 22px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+    }
+
+    /* ─── TAB NAVIGATION ─── */
+    .tools-tabs {
+      background: var(--cream);
+      padding: 16px 60px 0;
+      display: flex;
+      justify-content: center;
+      gap: 4px;
+      flex-wrap: wrap;
+      border-bottom: 1px solid rgba(31, 151, 249, 0.18);
+    }
+
+    .tools-tab {
+      background: none;
+      border: none;
+      padding: 16px 24px;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      color: var(--gray);
+      cursor: pointer;
+      border-bottom: 3px solid transparent;
+      margin-bottom: -1px;
+      transition: color 0.2s, border-color 0.2s;
+    }
+
+    .tools-tab:hover { color: var(--dark); }
+
+    .tools-tab.active {
+      color: var(--blue);
+      border-bottom-color: var(--blue);
+    }
+
+    /* ─── TAB PANELS ─── */
+    .tool-panel { display: none; }
+    .tool-panel.active { display: block; }
 
     .tool-inner {
       max-width: 1100px;
@@ -848,6 +932,10 @@
       .tool-inner { grid-template-columns: 1fr; gap: 48px; }
       .tool-inner.reverse { direction: ltr; }
       .tool-visual { order: -1; }
+
+      .package-summary { padding: 50px 32px 36px; }
+      .tools-tabs { padding: 12px 20px 0; gap: 0; }
+      .tools-tab { padding: 14px 14px; font-size: 0.85rem; }
     }
 
     @media (max-width: 600px) {
@@ -1114,121 +1202,148 @@
       <a href="https://calendly.com/iamtylervelasco0818/grivo-ai-demo-call" target="_blank" rel="noopener" class="page-cta fade-up">Book a Free Demo</a>
     </div>
 
-    <div class="tools-wrapper">
+    <!-- Package Summary -->
+    <div class="package-summary">
+      <div class="package-summary-inner fade-up">
+        <h3 class="package-name">Revenue Capture System</h3>
+        <p class="package-subtitle">Everything you need to capture, qualify, and follow up with every lead — automatically.</p>
+        <div class="package-pills">
+          <span class="package-pill">Tool 01 — Missed Call Text-Back</span>
+          <span class="package-pill">Tool 02 — Instant Response &amp; Lead Qualification</span>
+          <span class="package-pill">Tool 03 — Smart Follow-Up Engine</span>
+        </div>
+      </div>
+    </div>
 
-      <!-- Tool 1: Missed Call Recovery -->
-      <div class="tools-section">
-        <div class="tool-inner">
-          <div class="tool-content fade-up">
-            <div class="tool-number">Tool 01</div>
-            <h3 class="tool-title">Missed Call<br/>Text-Back</h3>
-            <p class="tool-body">
-              When a potential client calls and you don't answer, they move on. Our system instantly texts them back so they stay engaged while you finish the job.
-            </p>
-            <div class="tool-detail">
-              <div class="tool-detail-item">
-                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
-                Fires within seconds of a missed call — before they dial your competitor
-              </div>
-              <div class="tool-detail-item">
-                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
-                Personalized message that opens a real conversation
-              </div>
-              <div class="tool-detail-item">
-                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
-                Works 24/7 — even at 11pm on a Sunday
+    <!-- Tab Navigation -->
+    <div class="tools-tabs" role="tablist">
+      <button class="tools-tab active" data-tab="tool-panel-1" role="tab" aria-selected="true">Missed Call Text-Back</button>
+      <button class="tools-tab" data-tab="tool-panel-2" role="tab" aria-selected="false">Instant Response &amp; Lead Qualification</button>
+      <button class="tools-tab" data-tab="tool-panel-3" role="tab" aria-selected="false">Smart Follow-Up Engine</button>
+    </div>
+
+    <!-- Tab Panels -->
+    <div class="tool-panels">
+
+      <!-- Panel 1: Missed Call Text-Back -->
+      <div class="tool-panel active" id="tool-panel-1" role="tabpanel">
+        <div class="tools-section">
+          <div class="tool-inner">
+            <div class="tool-content fade-up">
+              <div class="tool-number">Tool 01</div>
+              <h3 class="tool-title">Missed Call<br/>Text-Back</h3>
+              <p class="tool-body">
+                When a potential client calls and you don't answer, they move on. Our system instantly texts them back so they stay engaged while you finish the job.
+              </p>
+              <div class="tool-detail">
+                <div class="tool-detail-item">
+                  <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                  Fires within seconds of a missed call — before they dial your competitor
+                </div>
+                <div class="tool-detail-item">
+                  <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                  Personalized message that opens a real conversation
+                </div>
+                <div class="tool-detail-item">
+                  <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                  Works 24/7 — even at 11pm on a Sunday
+                </div>
               </div>
             </div>
-          </div>
-          <div class="tool-visual fade-up">
-            <div class="tool-card-visual">
-              <div class="tool-icon-large">📞</div>
-              <div class="tool-card-stat">~80%</div>
-              <div class="tool-card-stat-label">of callers don't leave a voicemail — they just move on</div>
-              <div class="tool-card-divider"></div>
-              <span class="tool-card-tag">Instant Text-Back</span>
+            <div class="tool-visual fade-up">
+              <div class="tool-card-visual">
+                <div class="tool-icon-large">📞</div>
+                <div class="tool-card-stat">~80%</div>
+                <div class="tool-card-stat-label">of callers don't leave a voicemail — they just move on</div>
+                <div class="tool-card-divider"></div>
+                <span class="tool-card-tag">Instant Text-Back</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Tool 2: Instant Response & Lead Qualification -->
-      <div class="tools-section">
-        <div class="tool-inner reverse">
-          <div class="tool-content fade-up">
-            <div class="tool-number">Tool 02</div>
-            <h3 class="tool-title">Instant Response &amp;<br/>Lead Qualification</h3>
-            <p class="tool-body">
-              Speed wins — and so does filtering. When a new lead comes in, we respond in under 60 seconds, day or night. Then we automatically ask the right questions to qualify them before they ever reach you.
-            </p>
-            <div class="tool-detail">
-              <div class="tool-detail-item">
-                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
-                Responds to every new lead in under 60 seconds — 24/7, including weekends
-              </div>
-              <div class="tool-detail-item">
-                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
-                Automatically qualifies leads so only serious, ready-to-book prospects reach you
-              </div>
-              <div class="tool-detail-item">
-                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
-                The first business to respond wins the job — we make sure that's always you
-              </div>
-              <div class="tool-detail-item">
-                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
-                Feels personal and conversational — never robotic
-              </div>
-            </div>
-          </div>
-          <div class="tool-visual fade-up">
-            <div class="tool-card-visual dark">
-              <div class="tool-icon-large">⚡</div>
-              <div class="tool-card-stat">&lt; 60s</div>
-              <div class="tool-card-stat-label">response time, then instant qualification — before your competitor even picks up the phone</div>
-              <div class="tool-card-divider"></div>
-              <span class="tool-card-tag">Always First. Always Qualified.</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tool 3: Smart Follow-Up Engine -->
-      <div class="tools-section">
-        <div class="tool-inner reverse">
-          <div class="tool-content fade-up">
-            <div class="tool-number">Tool 03</div>
-            <h3 class="tool-title">Smart Follow-Up<br/>Engine</h3>
-            <p class="tool-body">
-              Most leads don't book on first contact. We automatically follow up over 7 days so no opportunity slips through.
-            </p>
-            <div class="tool-detail">
-              <div class="tool-detail-item">
-                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
-                Multi-touch sequence across text, email, and voicemail
-              </div>
-              <div class="tool-detail-item">
-                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
-                Stops automatically the moment a lead responds or books
-              </div>
-              <div class="tool-detail-item">
-                <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
-                Converts leads that would have been forgotten in 24 hours
+      <!-- Panel 2: Instant Response & Lead Qualification -->
+      <div class="tool-panel" id="tool-panel-2" role="tabpanel">
+        <div class="tools-section">
+          <div class="tool-inner reverse">
+            <div class="tool-content fade-up">
+              <div class="tool-number">Tool 02</div>
+              <h3 class="tool-title">Instant Response &amp;<br/>Lead Qualification</h3>
+              <p class="tool-body">
+                Speed wins — and so does filtering. When a new lead comes in, we respond in under 60 seconds, day or night. Then we automatically ask the right questions to qualify them before they ever reach you.
+              </p>
+              <div class="tool-detail">
+                <div class="tool-detail-item">
+                  <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                  Responds to every new lead in under 60 seconds — 24/7, including weekends
+                </div>
+                <div class="tool-detail-item">
+                  <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                  Automatically qualifies leads so only serious, ready-to-book prospects reach you
+                </div>
+                <div class="tool-detail-item">
+                  <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                  The first business to respond wins the job — we make sure that's always you
+                </div>
+                <div class="tool-detail-item">
+                  <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                  Feels personal and conversational — never robotic
+                </div>
               </div>
             </div>
-          </div>
-          <div class="tool-visual fade-up">
-            <div class="tool-card-visual dark">
-              <div class="tool-icon-large">🔁</div>
-              <div class="tool-card-stat">7 Days</div>
-              <div class="tool-card-stat-label">of automatic follow-up so zero leads fall through the cracks</div>
-              <div class="tool-card-divider"></div>
-              <span class="tool-card-tag">Set It &amp; Forget It</span>
+            <div class="tool-visual fade-up">
+              <div class="tool-card-visual dark">
+                <div class="tool-icon-large">⚡</div>
+                <div class="tool-card-stat">&lt; 60s</div>
+                <div class="tool-card-stat-label">response time, then instant qualification — before your competitor even picks up the phone</div>
+                <div class="tool-card-divider"></div>
+                <span class="tool-card-tag">Always First. Always Qualified.</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-    </div><!-- end .tools-wrapper -->
+      <!-- Panel 3: Smart Follow-Up Engine -->
+      <div class="tool-panel" id="tool-panel-3" role="tabpanel">
+        <div class="tools-section">
+          <div class="tool-inner reverse">
+            <div class="tool-content fade-up">
+              <div class="tool-number">Tool 03</div>
+              <h3 class="tool-title">Smart Follow-Up<br/>Engine</h3>
+              <p class="tool-body">
+                Most leads don't book on first contact. We automatically follow up over 7 days so no opportunity slips through.
+              </p>
+              <div class="tool-detail">
+                <div class="tool-detail-item">
+                  <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                  Multi-touch sequence across text, email, and voicemail
+                </div>
+                <div class="tool-detail-item">
+                  <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                  Stops automatically the moment a lead responds or books
+                </div>
+                <div class="tool-detail-item">
+                  <svg class="tool-detail-icon" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 00-1.414 0L8 12.586 4.707 9.293a1 1 0 00-1.414 1.414l4 4a1 1 0 001.414 0l8-8a1 1 0 000-1.414z" clip-rule="evenodd"/></svg>
+                  Converts leads that would have been forgotten in 24 hours
+                </div>
+              </div>
+            </div>
+            <div class="tool-visual fade-up">
+              <div class="tool-card-visual dark">
+                <div class="tool-icon-large">🔁</div>
+                <div class="tool-card-stat">7 Days</div>
+                <div class="tool-card-stat-label">of automatic follow-up so zero leads fall through the cracks</div>
+                <div class="tool-card-divider"></div>
+                <span class="tool-card-tag">Set It &amp; Forget It</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- end .tool-panels -->
   </section>
 
   <!-- ─── SYSTEM / SERVICE TIERS ─── -->
@@ -1360,6 +1475,24 @@
       link.addEventListener('click', () => {
         nav.classList.remove('open');
         hamburger.setAttribute('aria-expanded', 'false');
+      });
+    });
+
+    document.querySelectorAll('.tools-tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        const target = tab.dataset.tab;
+        document.querySelectorAll('.tools-tab').forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+        });
+        document.querySelectorAll('.tool-panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        tab.setAttribute('aria-selected', 'true');
+        const panel = document.getElementById(target);
+        if (panel) {
+          panel.classList.add('active');
+          panel.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
+        }
       });
     });
   </script>

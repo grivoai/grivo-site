@@ -609,45 +609,46 @@
       justify-content: center;
     }
 
-    .tool-card-visual {
-      background: #ffffff;
-      border: 1px solid #E8E8E8;
-      border-radius: 20px;
-      padding: 52px 44px;
-      width: 100%;
-      max-width: 420px;
-      color: #0D0D0D;
+    .tool-blob-card {
       position: relative;
-      overflow: hidden;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+      width: 380px;
+      height: 380px;
+      flex-shrink: 0;
     }
 
-    .tool-card-visual::before {
-      content: '';
+    .tool-blob-shape {
       position: absolute;
-      top: 50%; left: 50%;
-      width: 120%; height: 120%;
-      transform: translate(-50%, -50%);
-      background: rgba(31, 151, 249, 0.10);
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      animation: blob-morph 8s ease-in-out infinite alternate;
-      z-index: 0;
+      inset: 0;
+      background: radial-gradient(circle at 30% 30%, #5BB8FF 0%, #2D9CDB 45%, #1565A8 100%);
+      border-radius: 55% 45% 35% 65% / 55% 35% 65% 45%;
+      animation: tool-blob-morph 10s ease-in-out infinite alternate, tool-blob-float 5s ease-in-out infinite alternate;
+      box-shadow:
+        12px 16px 40px rgba(21,101,168,0.45),
+        inset -4px -4px 16px rgba(255,255,255,0.15);
     }
 
-    @keyframes blob-morph {
-      0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
-      33%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
-      66%  { border-radius: 50% 30% 60% 40% / 40% 70% 30% 60%; }
-      100% { border-radius: 40% 60% 70% 30% / 60% 40% 50% 40%; }
+    @keyframes tool-blob-morph {
+      0%   { border-radius: 55% 45% 35% 65% / 55% 35% 65% 45%; }
+      25%  { border-radius: 40% 60% 60% 40% / 45% 55% 45% 55%; }
+      50%  { border-radius: 65% 35% 45% 55% / 35% 65% 55% 45%; }
+      75%  { border-radius: 45% 55% 55% 45% / 60% 40% 60% 40%; }
+      100% { border-radius: 35% 65% 40% 60% / 50% 50% 50% 50%; }
     }
 
-    .tool-card-visual.dark {
-      background: #ffffff;
-      color: #0D0D0D;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    @keyframes tool-blob-float {
+      from { transform: perspective(800px) rotateY(-6deg) rotateX(3deg) translateY(0px); }
+      to   { transform: perspective(800px) rotateY(-6deg) rotateX(3deg) translateY(-8px); }
     }
 
-    .tool-card-visual > * { position: relative; z-index: 1; }
+    .tool-blob-card-content {
+      position: relative;
+      z-index: 2;
+      padding: 48px 40px;
+      color: #fff;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
 
     .tool-icon-large {
       font-size: 3.5rem;
@@ -661,29 +662,29 @@
       font-size: 3rem;
       line-height: 1;
       margin-bottom: 8px;
-      color: #0D0D0D;
+      color: #fff;
+      text-shadow: 2px 3px 6px rgba(0,0,0,0.3);
     }
 
     .tool-card-stat-label {
       font-size: 0.9rem;
-      color: #3C4043;
+      color: rgba(255,255,255,0.85);
       font-weight: 300;
       text-transform: uppercase;
       letter-spacing: 1px;
       line-height: 1.4;
-      opacity: 0.75;
     }
 
     .tool-card-divider {
       height: 1px;
-      background: #E8E8E8;
+      background: rgba(255,255,255,0.3);
       margin: 28px 0;
     }
 
     .tool-card-tag {
       display: inline-block;
-      background: rgba(31, 151, 249, 0.1);
-      border: 1px solid rgba(31, 151, 249, 0.3);
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.3);
       border-radius: 50px;
       padding: 6px 16px;
       font-family: 'Space Mono', monospace;
@@ -691,7 +692,7 @@
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: var(--blue);
+      color: #fff;
     }
 
     /* Tab panel directional fade animations */
@@ -1169,7 +1170,7 @@
 
     /* ─── STATS STRIP ─── */
     #stats-strip {
-      background: #ffffff;
+      background: #F5F5F5;
       min-height: unset;
       padding: 60px 60px;
       flex-direction: row;
@@ -1181,7 +1182,45 @@
     .stat-block {
       flex: 1;
       max-width: 280px;
-      padding: 8px 0 8px 26px;
+      padding: 32px 16px;
+      position: relative;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .stat-blob-wrap {
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 160px; height: 160px;
+      transform: translate(-50%, -50%);
+      transition: transform 0.4s ease;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .stat-block.stat-active .stat-blob-wrap {
+      transform: translate(-50%, -50%) scale(1.18);
+    }
+
+    .stat-blob {
+      width: 100%; height: 100%;
+      background: radial-gradient(circle at 35% 35%, #5BB8FF, #2D9CDB 60%, #1a7abf);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      animation: stat-blob-morph 8s ease-in-out infinite alternate;
+      box-shadow: 6px 6px 20px rgba(45,156,219,0.4), inset -2px -2px 8px rgba(255,255,255,0.3);
+    }
+
+    .stat-block:nth-child(1) .stat-blob { animation-delay: 0s; }
+    .stat-block:nth-child(3) .stat-blob { animation-delay: -2.5s; }
+    .stat-block:nth-child(5) .stat-blob { animation-delay: -5s; }
+
+    @keyframes stat-blob-morph {
+      0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: scale(1.0); }
+      33%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: scale(1.06); }
+      66%  { border-radius: 50% 30% 60% 40% / 40% 70% 30% 60%; transform: scale(1.03); }
+      100% { border-radius: 40% 60% 70% 30% / 60% 40% 50% 40%; transform: scale(1.12); }
     }
 
     .stat-number {
@@ -1192,39 +1231,23 @@
       color: #0D0D0D;
       line-height: 1.05;
       margin-bottom: 4px;
-      animation: stat-pulse 3s ease-in-out infinite;
-      animation-play-state: paused;
+      position: relative;
+      z-index: 2;
     }
 
-    .stat-block.stat-animated .stat-number { animation-play-state: running; }
-
-    @keyframes stat-pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.75; }
-    }
-
-    #stats-strip > div:nth-child(1) .stat-number { animation-delay: 0s; }
-    #stats-strip > div:nth-child(3) .stat-number { animation-delay: 1.0s; }
-    #stats-strip > div:nth-child(5) .stat-number { animation-delay: 2.0s; }
-
-    .stat-underline {
-      display: block;
-      height: 3px;
-      background: var(--blue);
-      width: 0;
-      border-radius: 2px;
-      margin-bottom: 10px;
-      transition: width 0.8s ease-out 0.3s;
-    }
-
-    .stat-block.stat-animated .stat-underline { width: 60%; }
+    .stat-block.stat-active .stat-number { font-weight: 900; }
 
     .stat-label {
       display: block;
       font-size: 0.95rem;
       color: #3C4043;
       line-height: 1.5;
+      position: relative;
+      z-index: 2;
+      transition: color 0.3s ease;
     }
+
+    .stat-block.stat-active .stat-label { color: #0D0D0D; }
 
     .stat-divider {
       width: 1px;
@@ -1232,6 +1255,102 @@
       background: #E8E8E8;
       margin: 0 48px;
       flex-shrink: 0;
+    }
+
+    /* ─── CALL SCREEN ─── */
+    .call-screen-full {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      border-radius: 32px;
+      opacity: 0;
+      transition: opacity 0.35s ease;
+    }
+
+    .call-screen-full.cfs-show { opacity: 1; }
+
+    .call-avatar-large {
+      width: 68px; height: 68px;
+      border-radius: 50%;
+      background: #2D9CDB;
+      color: #fff;
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .call-name-large {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .call-sub-text {
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 0.5px;
+      margin-bottom: 32px;
+    }
+
+    .call-action-row { display: flex; gap: 36px; align-items: center; }
+
+    .call-btn-lg {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .call-btn-end { background: #e53e3e; }
+    .call-btn-ans { background: #38a169; }
+    .call-btn-lg svg { width: 22px; height: 22px; }
+
+    @keyframes phone-vibrate {
+      0%, 100% { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateX(0); }
+      20%, 60% { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateX(-3px); }
+      40%, 80% { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateX(3px); }
+    }
+
+    .typing-indicator {
+      align-self: flex-start;
+      background: #F0F0F0;
+      border-radius: 14px;
+      border-bottom-left-radius: 4px;
+      padding: 8px 12px;
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .typing-indicator.typ-show { opacity: 1; }
+
+    .typing-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: #999;
+      animation: typing-bounce 1.2s ease-in-out infinite;
+    }
+
+    .typing-dot:nth-child(2) { animation-delay: 0.2s; }
+    .typing-dot:nth-child(3) { animation-delay: 0.4s; }
+
+    @keyframes typing-bounce {
+      0%, 60%, 100% { transform: translateY(0); }
+      30% { transform: translateY(-4px); }
     }
 
     /* ─── RESPONSIVE ─── */
@@ -1399,13 +1518,12 @@
       .stat-block {
         max-width: 100%;
         width: 100%;
-        text-align: center;
-        padding: 14px 0 0 0;
+        padding: 32px 16px;
       }
 
-      .stat-number { font-size: 2.8rem; }
+      .stat-blob-wrap { width: 120px; height: 120px; }
 
-      .stat-underline { margin: 4px auto 10px; }
+      .stat-number { font-size: 2.8rem; }
 
       .stat-divider {
         width: 80px;
@@ -1510,6 +1628,20 @@
       <div class="hero-phone-wrap fade-up">
         <div class="phone-frame" id="phoneFrame">
           <div class="phone-screen">
+            <!-- Incoming call overlay -->
+            <div class="call-screen-full" id="callScreenFull">
+              <div class="call-avatar-large">SM</div>
+              <div class="call-name-large">Sarah M.</div>
+              <div class="call-sub-text">Incoming Call...</div>
+              <div class="call-action-row">
+                <div class="call-btn-lg call-btn-end">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </div>
+                <div class="call-btn-lg call-btn-ans">
+                  <svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+                </div>
+              </div>
+            </div>
             <div class="phone-status-bar">
               <span class="sb-time">9:41</span>
               <div class="sb-notch"></div>
@@ -1518,8 +1650,8 @@
             <div class="phone-notif" id="phoneNotif">
               <span class="notif-icon-emoji">&#128245;</span>
               <div class="notif-body">
-                <span class="notif-source">Bright Home Cleaning</span>
-                <span class="notif-detail">Missed call from Sarah M.</span>
+                <span class="notif-source">Missed call &middot; Sarah M. &middot; just now</span>
+                <span class="notif-detail">Bright Home Cleaning</span>
               </div>
             </div>
             <div class="chat-ui" id="chatUi">
@@ -1530,10 +1662,15 @@
               <div class="chat-msgs" id="chatMsgs">
                 <div class="pm-bubble pm-out" id="pmsg1">Hi Sarah! This is Mia from Bright Home Cleaning &mdash; we just missed your call. Still looking for a cleaning quote? Happy to help &#128522;</div>
                 <div class="pm-bubble pm-in"  id="pmsg2">Yes! I've been looking for a reliable cleaner. Do you service the Fremont area?</div>
-                <div class="pm-bubble pm-out" id="pmsg3">We do! What size is your home and how often are you looking for service?</div>
-                <div class="pm-bubble pm-in"  id="pmsg4">It's a 3BR/2BA. Probably bi-weekly would be perfect.</div>
-                <div class="pm-bubble pm-out" id="pmsg5">Perfect &mdash; I'll send over a quote shortly. Want to schedule a quick call tomorrow?</div>
-                <div class="pm-bubble pm-in"  id="pmsg6">That works! 10am is good for me.</div>
+                <div class="pm-bubble pm-out" id="pmsg3">We do! What size is your home and how often are you thinking?</div>
+                <div class="pm-bubble pm-in"  id="pmsg4">3BR/2BA, probably bi-weekly.</div>
+                <div class="pm-bubble pm-out" id="pmsg5">Perfect &mdash; I'll send a quote shortly. Want to do a quick call tomorrow to go over details?</div>
+                <div class="pm-bubble pm-in"  id="pmsg6">That works! 10am is great.</div>
+                <div class="typing-indicator" id="typingIndicator">
+                  <div class="typing-dot"></div>
+                  <div class="typing-dot"></div>
+                  <div class="typing-dot"></div>
+                </div>
               </div>
             </div>
             <div class="lead-pill" id="leadPill">&#10003; Lead Captured &middot; Follow-up Booked</div>
@@ -1547,20 +1684,20 @@
   <!-- ─── STATS STRIP ─── -->
   <section id="stats-strip">
     <div class="stat-block fade-up">
+      <div class="stat-blob-wrap"><div class="stat-blob"></div></div>
       <span class="stat-number" data-target="80" data-prefix="~" data-suffix="%" data-duration="1200">~80%</span>
-      <span class="stat-underline"></span>
       <span class="stat-label">of callers never leave a voicemail</span>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-block fade-up">
+      <div class="stat-blob-wrap"><div class="stat-blob"></div></div>
       <span class="stat-number" data-target="60" data-prefix="&lt;&nbsp;" data-suffix=" sec" data-duration="1000">&lt; 60 sec</span>
-      <span class="stat-underline"></span>
       <span class="stat-label">average text-back time</span>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-block fade-up">
+      <div class="stat-blob-wrap"><div class="stat-blob"></div></div>
       <span class="stat-number" data-target="3" data-suffix="x" data-duration="800">3x</span>
-      <span class="stat-underline"></span>
       <span class="stat-label">more follow-up attempts than manual outreach</span>
     </div>
   </section>
@@ -1671,12 +1808,15 @@
               </div>
             </div>
             <div class="tool-visual fade-up">
-              <div class="tool-card-visual">
-                <div class="tool-icon-large">&#128222;</div>
-                <div class="tool-card-stat">~80%</div>
-                <div class="tool-card-stat-label">of callers don't leave a voicemail &mdash; they just move on</div>
-                <div class="tool-card-divider"></div>
-                <span class="tool-card-tag">Instant Text-Back</span>
+              <div class="tool-blob-card">
+                <div class="tool-blob-shape"></div>
+                <div class="tool-blob-card-content">
+                  <div class="tool-icon-large">&#128222;</div>
+                  <div class="tool-card-stat">~80%</div>
+                  <div class="tool-card-stat-label">of callers don't leave a voicemail &mdash; they just move on</div>
+                  <div class="tool-card-divider"></div>
+                  <span class="tool-card-tag">Instant Text-Back</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1713,12 +1853,15 @@
               </div>
             </div>
             <div class="tool-visual fade-up">
-              <div class="tool-card-visual dark">
-                <div class="tool-icon-large">&#9889;</div>
-                <div class="tool-card-stat">&lt; 60s</div>
-                <div class="tool-card-stat-label">response time, then instant qualification &mdash; before your competitor even picks up the phone</div>
-                <div class="tool-card-divider"></div>
-                <span class="tool-card-tag">Always First. Always Qualified.</span>
+              <div class="tool-blob-card">
+                <div class="tool-blob-shape"></div>
+                <div class="tool-blob-card-content">
+                  <div class="tool-icon-large">&#9889;</div>
+                  <div class="tool-card-stat">&lt; 60s</div>
+                  <div class="tool-card-stat-label">response time, then instant qualification &mdash; before your competitor even picks up the phone</div>
+                  <div class="tool-card-divider"></div>
+                  <span class="tool-card-tag">Always First. Always Qualified.</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1751,12 +1894,15 @@
               </div>
             </div>
             <div class="tool-visual fade-up">
-              <div class="tool-card-visual dark">
-                <div class="tool-icon-large">&#128257;</div>
-                <div class="tool-card-stat">7 Days</div>
-                <div class="tool-card-stat-label">of automatic follow-up so zero leads fall through the cracks</div>
-                <div class="tool-card-divider"></div>
-                <span class="tool-card-tag">Set It &amp; Forget It</span>
+              <div class="tool-blob-card">
+                <div class="tool-blob-shape"></div>
+                <div class="tool-blob-card-content">
+                  <div class="tool-icon-large">&#128257;</div>
+                  <div class="tool-card-stat">7 Days</div>
+                  <div class="tool-card-stat-label">of automatic follow-up so zero leads fall through the cracks</div>
+                  <div class="tool-card-divider"></div>
+                  <span class="tool-card-tag">Set It &amp; Forget It</span>
+                </div>
               </div>
             </div>
           </div>
@@ -1943,8 +2089,6 @@
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
-        const block = el.closest('.stat-block');
-        if (block) block.classList.add('stat-animated');
         const target = parseInt(el.dataset.target, 10);
         const prefix = el.dataset.prefix || '';
         const suffix = el.dataset.suffix || '';
@@ -1965,13 +2109,29 @@
 
     document.querySelectorAll('.stat-number[data-target]').forEach(el => statObserver.observe(el));
 
+    // ─── Stats active blob cycling ───
+    (function statCycle() {
+      const statBlocks = document.querySelectorAll('.stat-block');
+      if (!statBlocks.length) return;
+      let idx = 0;
+      statBlocks[idx].classList.add('stat-active');
+      setInterval(() => {
+        statBlocks[idx].classList.remove('stat-active');
+        idx = (idx + 1) % statBlocks.length;
+        statBlocks[idx].classList.add('stat-active');
+      }, 3000);
+    })();
+
     // ─── Phone mockup animation ───
     (function phoneAnimation() {
-      const phoneNotif = document.getElementById('phoneNotif');
-      const chatUi     = document.getElementById('chatUi');
-      const chatMsgs   = document.getElementById('chatMsgs');
-      const leadPill   = document.getElementById('leadPill');
-      if (!phoneNotif) return;
+      const phoneFrame  = document.getElementById('phoneFrame');
+      const callScreen  = document.getElementById('callScreenFull');
+      const phoneNotif  = document.getElementById('phoneNotif');
+      const chatUi      = document.getElementById('chatUi');
+      const chatMsgs    = document.getElementById('chatMsgs');
+      const leadPill    = document.getElementById('leadPill');
+      const typingInd   = document.getElementById('typingIndicator');
+      if (!callScreen) return;
 
       function showBubble(id) {
         const el = document.getElementById(id);
@@ -1981,27 +2141,72 @@
       }
 
       function reset() {
+        callScreen.classList.remove('cfs-show');
         phoneNotif.classList.remove('notif-in');
         if (chatUi) chatUi.classList.remove('cui-show');
         if (leadPill) leadPill.classList.remove('pill-show');
+        if (typingInd) typingInd.classList.remove('typ-show');
         ['pmsg1','pmsg2','pmsg3','pmsg4','pmsg5','pmsg6'].forEach(id => {
           const el = document.getElementById(id);
           if (el) el.classList.remove('bbl-show');
         });
         if (chatMsgs) chatMsgs.scrollTop = 0;
+        if (phoneFrame) phoneFrame.style.animation = '';
       }
 
       function runSequence() {
         reset();
-        const CS = 1600;
-        setTimeout(() => phoneNotif.classList.add('notif-in'), 200);
-        setTimeout(() => phoneNotif.classList.remove('notif-in'), 1200);
-        setTimeout(() => chatUi && chatUi.classList.add('cui-show'), CS);
-        [0, 1500, 3000, 4500, 6000, 7500].forEach((delay, i) => {
-          setTimeout(() => showBubble('pmsg' + (i + 1)), CS + delay);
-        });
-        setTimeout(() => leadPill && leadPill.classList.add('pill-show'), CS + 7500 + 1500);
-        setTimeout(runSequence, CS + 7500 + 1500 + 3000 + 500);
+
+        // Step 1 (0.2s): Show incoming call + vibrate
+        setTimeout(() => {
+          callScreen.classList.add('cfs-show');
+          if (phoneFrame) {
+            phoneFrame.style.animation = 'phone-vibrate 0.08s ease-in-out 12';
+            phoneFrame.addEventListener('animationend', () => {
+              phoneFrame.style.animation = '';
+            }, { once: true });
+          }
+        }, 200);
+
+        // Step 2 (2.5s): Hide call, show missed notif
+        setTimeout(() => callScreen.classList.remove('cfs-show'), 2500);
+        setTimeout(() => phoneNotif.classList.add('notif-in'), 2900);
+
+        // Step 3 (4s): Hide notif, show chat
+        setTimeout(() => {
+          phoneNotif.classList.remove('notif-in');
+          if (chatUi) chatUi.classList.add('cui-show');
+        }, 4000);
+
+        // Step 4 (4.5s): First outgoing bubble
+        setTimeout(() => showBubble('pmsg1'), 4500);
+
+        // Step 5 (6s): Typing indicator
+        setTimeout(() => { if (typingInd) typingInd.classList.add('typ-show'); }, 6000);
+
+        // Step 6 (7s): Typing → first incoming bubble
+        setTimeout(() => {
+          if (typingInd) typingInd.classList.remove('typ-show');
+          showBubble('pmsg2');
+        }, 7000);
+
+        // Step 7 (8.5s): Second outgoing
+        setTimeout(() => showBubble('pmsg3'), 8500);
+
+        // Step 8 (10s): Second incoming
+        setTimeout(() => showBubble('pmsg4'), 10000);
+
+        // Step 9 (11.5s): Third outgoing
+        setTimeout(() => showBubble('pmsg5'), 11500);
+
+        // Step 10 (13s): Third incoming
+        setTimeout(() => showBubble('pmsg6'), 13000);
+
+        // Step 11 (14.5s): Lead captured pill
+        setTimeout(() => { if (leadPill) leadPill.classList.add('pill-show'); }, 14500);
+
+        // Hold 3s, then loop
+        setTimeout(runSequence, 18000);
       }
 
       runSequence();

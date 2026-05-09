@@ -609,76 +609,37 @@
       justify-content: center;
     }
 
-    .tool-blob-card {
-      position: relative;
-      width: 380px;
-      height: 380px;
-      flex-shrink: 0;
-    }
-
-    .tool-blob-shape {
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 30% 30%, #5BB8FF 0%, #2D9CDB 45%, #1565A8 100%);
-      border-radius: 55% 45% 35% 65% / 55% 35% 65% 45%;
-      animation: tool-blob-morph 10s ease-in-out infinite alternate, tool-blob-float 5s ease-in-out infinite alternate;
-      box-shadow:
-        12px 16px 40px rgba(21,101,168,0.45),
-        inset -4px -4px 16px rgba(255,255,255,0.15);
-    }
-
-    @keyframes tool-blob-morph {
-      0%   { border-radius: 55% 45% 35% 65% / 55% 35% 65% 45%; }
-      25%  { border-radius: 40% 60% 60% 40% / 45% 55% 45% 55%; }
-      50%  { border-radius: 65% 35% 45% 55% / 35% 65% 55% 45%; }
-      75%  { border-radius: 45% 55% 55% 45% / 60% 40% 60% 40%; }
-      100% { border-radius: 35% 65% 40% 60% / 50% 50% 50% 50%; }
-    }
-
-    @keyframes tool-blob-float {
-      from { transform: perspective(800px) rotateY(-6deg) rotateX(3deg) translateY(0px); }
-      to   { transform: perspective(800px) rotateY(-6deg) rotateX(3deg) translateY(-8px); }
-    }
-
-    .tool-blob-card-content {
-      position: relative;
-      z-index: 2;
-      padding: 48px 40px;
-      color: #fff;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-    }
-
     .tool-icon-large {
-      font-size: 3.5rem;
-      margin-bottom: 24px;
+      font-size: 3.2rem;
+      margin-bottom: 18px;
       line-height: 1;
     }
 
     .tool-card-stat {
       font-family: 'Space Mono', monospace;
       font-weight: 700;
-      font-size: 3rem;
+      font-size: 2.8rem;
       line-height: 1;
       margin-bottom: 8px;
       color: #fff;
-      text-shadow: 2px 3px 6px rgba(0,0,0,0.3);
+      text-shadow: 1px 2px 8px rgba(0,0,0,0.35);
     }
 
     .tool-card-stat-label {
-      font-size: 0.9rem;
-      color: rgba(255,255,255,0.85);
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.88);
       font-weight: 300;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 0.8px;
       line-height: 1.4;
+      text-align: center;
     }
 
     .tool-card-divider {
       height: 1px;
       background: rgba(255,255,255,0.3);
-      margin: 28px 0;
+      margin: 20px 0;
+      width: 100%;
     }
 
     .tool-card-tag {
@@ -688,7 +649,7 @@
       border-radius: 50px;
       padding: 6px 16px;
       font-family: 'Space Mono', monospace;
-      font-size: 0.72rem;
+      font-size: 0.68rem;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
@@ -1182,79 +1143,87 @@
     .stat-block {
       flex: 1;
       max-width: 280px;
-      padding: 32px 16px;
-      position: relative;
-      text-align: center;
+      padding: 24px 16px;
       display: flex;
-      flex-direction: column;
       align-items: center;
-    }
-
-    .stat-blob-wrap {
-      position: absolute;
-      top: 50%; left: 50%;
-      width: 160px; height: 160px;
-      transform: translate(-50%, -50%);
-      transition: transform 0.4s ease;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .stat-block.stat-active .stat-blob-wrap {
-      transform: translate(-50%, -50%) scale(1.18);
-    }
-
-    .stat-blob {
-      width: 100%; height: 100%;
-      background: radial-gradient(circle at 35% 35%, #5BB8FF, #2D9CDB 60%, #1a7abf);
-      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
-      animation: stat-blob-morph 8s ease-in-out infinite alternate;
-      box-shadow: 6px 6px 20px rgba(45,156,219,0.4), inset -2px -2px 8px rgba(255,255,255,0.3);
-    }
-
-    .stat-block:nth-child(1) .stat-blob { animation-delay: 0s; }
-    .stat-block:nth-child(3) .stat-blob { animation-delay: -2.5s; }
-    .stat-block:nth-child(5) .stat-blob { animation-delay: -5s; }
-
-    @keyframes stat-blob-morph {
-      0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; transform: scale(1.0); }
-      33%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; transform: scale(1.06); }
-      66%  { border-radius: 50% 30% 60% 40% / 40% 70% 30% 60%; transform: scale(1.03); }
-      100% { border-radius: 40% 60% 70% 30% / 60% 40% 50% 40%; transform: scale(1.12); }
+      justify-content: center;
     }
 
     .stat-number {
       display: block;
       font-family: 'Space Mono', monospace;
       font-weight: 700;
-      font-size: 3.5rem;
-      color: #0D0D0D;
-      line-height: 1.05;
-      margin-bottom: 4px;
-      position: relative;
-      z-index: 2;
+      font-size: 2.4rem;
+      color: #fff;
+      line-height: 1.0;
+      margin-bottom: 5px;
+      text-shadow: 1px 2px 8px rgba(0,0,0,0.35);
     }
 
-    .stat-block.stat-active .stat-number { font-weight: 900; }
+    .stat-blob-unit.stat-active .stat-number { font-weight: 900; }
 
     .stat-label {
       display: block;
-      font-size: 0.95rem;
-      color: #3C4043;
-      line-height: 1.5;
-      position: relative;
-      z-index: 2;
-      transition: color 0.3s ease;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.9);
+      line-height: 1.35;
     }
-
-    .stat-block.stat-active .stat-label { color: #0D0D0D; }
 
     .stat-divider {
       width: 1px;
       height: 64px;
       background: #E8E8E8;
-      margin: 0 48px;
+      margin: 0 32px;
       flex-shrink: 0;
+    }
+
+    /* ─── BLOB UNITS (stats + tool cards) ─── */
+    .blob-unit {
+      background: radial-gradient(circle at 30% 30%, #5BB8FF, #2D9CDB 50%, #1565A8);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: #fff;
+      box-shadow:
+        8px 12px 32px rgba(21,101,168,0.45),
+        inset -3px -3px 12px rgba(255,255,255,0.15);
+      animation: blob-morph 10s ease-in-out infinite;
+      will-change: transform, border-radius;
+      --blob-scale: 1;
+    }
+
+    .stat-blob-unit {
+      width: 170px;
+      height: 170px;
+      padding: 14px 16px;
+    }
+
+    .stat-blob-unit.stat-active { --blob-scale: 1.14; }
+
+    #stat-blob-1 { animation-duration: 9s;  animation-delay: 0s;  }
+    #stat-blob-2 { animation-duration: 11s; animation-delay: -3s; }
+    #stat-blob-3 { animation-duration: 13s; animation-delay: -6s; }
+
+    .tool-blob-unit {
+      width: 360px;
+      height: 360px;
+      padding: 40px 36px;
+      flex-shrink: 0;
+    }
+
+    #tool-blob-1 { animation-duration: 10s; animation-delay: -1s;  }
+    #tool-blob-2 { animation-duration: 12s; animation-delay: -4s;  }
+    #tool-blob-3 { animation-duration: 14s; animation-delay: -7s;  }
+
+    @keyframes blob-morph {
+      0%   { border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; transform: perspective(900px) rotateY(-6deg) rotateX(3deg) translateY(0px) scale(var(--blob-scale)); }
+      25%  { border-radius: 40% 60% 45% 55% / 60% 40% 55% 45%; transform: perspective(900px) rotateY(-3deg) rotateX(6deg) translateY(-6px) scale(var(--blob-scale)); }
+      50%  { border-radius: 55% 45% 60% 40% / 45% 55% 40% 60%; transform: perspective(900px) rotateY(-8deg) rotateX(2deg) translateY(-10px) scale(var(--blob-scale)); }
+      75%  { border-radius: 45% 55% 40% 60% / 55% 45% 60% 40%; transform: perspective(900px) rotateY(-4deg) rotateX(5deg) translateY(-4px) scale(var(--blob-scale)); }
+      100% { border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; transform: perspective(900px) rotateY(-6deg) rotateX(3deg) translateY(0px) scale(var(--blob-scale)); }
     }
 
     /* ─── CALL SCREEN ─── */
@@ -1518,12 +1487,12 @@
       .stat-block {
         max-width: 100%;
         width: 100%;
-        padding: 32px 16px;
+        padding: 16px;
       }
 
-      .stat-blob-wrap { width: 120px; height: 120px; }
+      .stat-blob-unit { width: 130px; height: 130px; }
 
-      .stat-number { font-size: 2.8rem; }
+      .stat-number { font-size: 1.9rem; }
 
       .stat-divider {
         width: 80px;
@@ -1684,21 +1653,24 @@
   <!-- ─── STATS STRIP ─── -->
   <section id="stats-strip">
     <div class="stat-block fade-up">
-      <div class="stat-blob-wrap"><div class="stat-blob"></div></div>
-      <span class="stat-number" data-target="80" data-prefix="~" data-suffix="%" data-duration="1200">~80%</span>
-      <span class="stat-label">of callers never leave a voicemail</span>
+      <div class="blob-unit stat-blob-unit" id="stat-blob-1">
+        <span class="stat-number" data-target="80" data-prefix="~" data-suffix="%" data-duration="1200">~80%</span>
+        <span class="stat-label">of callers never leave a voicemail</span>
+      </div>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-block fade-up">
-      <div class="stat-blob-wrap"><div class="stat-blob"></div></div>
-      <span class="stat-number" data-target="60" data-prefix="&lt;&nbsp;" data-suffix=" sec" data-duration="1000">&lt; 60 sec</span>
-      <span class="stat-label">average text-back time</span>
+      <div class="blob-unit stat-blob-unit" id="stat-blob-2">
+        <span class="stat-number" data-target="60" data-prefix="&lt;&nbsp;" data-suffix=" sec" data-duration="1000">&lt; 60 sec</span>
+        <span class="stat-label">average text-back time</span>
+      </div>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-block fade-up">
-      <div class="stat-blob-wrap"><div class="stat-blob"></div></div>
-      <span class="stat-number" data-target="3" data-suffix="x" data-duration="800">3x</span>
-      <span class="stat-label">more follow-up attempts than manual outreach</span>
+      <div class="blob-unit stat-blob-unit" id="stat-blob-3">
+        <span class="stat-number" data-target="3" data-suffix="x" data-duration="800">3x</span>
+        <span class="stat-label">more follow-up attempts than manual outreach</span>
+      </div>
     </div>
   </section>
 
@@ -1808,15 +1780,12 @@
               </div>
             </div>
             <div class="tool-visual fade-up">
-              <div class="tool-blob-card">
-                <div class="tool-blob-shape"></div>
-                <div class="tool-blob-card-content">
-                  <div class="tool-icon-large">&#128222;</div>
-                  <div class="tool-card-stat">~80%</div>
-                  <div class="tool-card-stat-label">of callers don't leave a voicemail &mdash; they just move on</div>
-                  <div class="tool-card-divider"></div>
-                  <span class="tool-card-tag">Instant Text-Back</span>
-                </div>
+              <div class="blob-unit tool-blob-unit" id="tool-blob-1">
+                <div class="tool-icon-large">&#128222;</div>
+                <div class="tool-card-stat">~80%</div>
+                <div class="tool-card-stat-label">of callers don't leave a voicemail &mdash; they just move on</div>
+                <div class="tool-card-divider"></div>
+                <span class="tool-card-tag">Instant Text-Back</span>
               </div>
             </div>
           </div>
@@ -1853,15 +1822,12 @@
               </div>
             </div>
             <div class="tool-visual fade-up">
-              <div class="tool-blob-card">
-                <div class="tool-blob-shape"></div>
-                <div class="tool-blob-card-content">
-                  <div class="tool-icon-large">&#9889;</div>
-                  <div class="tool-card-stat">&lt; 60s</div>
-                  <div class="tool-card-stat-label">response time, then instant qualification &mdash; before your competitor even picks up the phone</div>
-                  <div class="tool-card-divider"></div>
-                  <span class="tool-card-tag">Always First. Always Qualified.</span>
-                </div>
+              <div class="blob-unit tool-blob-unit" id="tool-blob-2">
+                <div class="tool-icon-large">&#9889;</div>
+                <div class="tool-card-stat">&lt; 60s</div>
+                <div class="tool-card-stat-label">response time, then instant qualification &mdash; before your competitor even picks up the phone</div>
+                <div class="tool-card-divider"></div>
+                <span class="tool-card-tag">Always First. Always Qualified.</span>
               </div>
             </div>
           </div>
@@ -1894,15 +1860,12 @@
               </div>
             </div>
             <div class="tool-visual fade-up">
-              <div class="tool-blob-card">
-                <div class="tool-blob-shape"></div>
-                <div class="tool-blob-card-content">
-                  <div class="tool-icon-large">&#128257;</div>
-                  <div class="tool-card-stat">7 Days</div>
-                  <div class="tool-card-stat-label">of automatic follow-up so zero leads fall through the cracks</div>
-                  <div class="tool-card-divider"></div>
-                  <span class="tool-card-tag">Set It &amp; Forget It</span>
-                </div>
+              <div class="blob-unit tool-blob-unit" id="tool-blob-3">
+                <div class="tool-icon-large">&#128257;</div>
+                <div class="tool-card-stat">7 Days</div>
+                <div class="tool-card-stat-label">of automatic follow-up so zero leads fall through the cracks</div>
+                <div class="tool-card-divider"></div>
+                <span class="tool-card-tag">Set It &amp; Forget It</span>
               </div>
             </div>
           </div>
@@ -2111,14 +2074,14 @@
 
     // ─── Stats active blob cycling ───
     (function statCycle() {
-      const statBlocks = document.querySelectorAll('.stat-block');
-      if (!statBlocks.length) return;
+      const blobs = document.querySelectorAll('.stat-blob-unit');
+      if (!blobs.length) return;
       let idx = 0;
-      statBlocks[idx].classList.add('stat-active');
+      blobs[idx].classList.add('stat-active');
       setInterval(() => {
-        statBlocks[idx].classList.remove('stat-active');
-        idx = (idx + 1) % statBlocks.length;
-        statBlocks[idx].classList.add('stat-active');
+        blobs[idx].classList.remove('stat-active');
+        idx = (idx + 1) % blobs.length;
+        blobs[idx].classList.add('stat-active');
       }, 3000);
     })();
 

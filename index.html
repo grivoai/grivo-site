@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -610,19 +610,44 @@
     }
 
     .tool-card-visual {
-      background: var(--blue);
+      background: #ffffff;
+      border: 1px solid #E8E8E8;
       border-radius: 20px;
       padding: 52px 44px;
       width: 100%;
       max-width: 420px;
-      color: var(--white);
-      box-shadow: 0 20px 60px rgba(31, 151, 249, 0.25);
+      color: #0D0D0D;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+    }
+
+    .tool-card-visual::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      width: 120%; height: 120%;
+      transform: translate(-50%, -50%);
+      background: rgba(31, 151, 249, 0.10);
+      border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+      animation: blob-morph 8s ease-in-out infinite alternate;
+      z-index: 0;
+    }
+
+    @keyframes blob-morph {
+      0%   { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+      33%  { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+      66%  { border-radius: 50% 30% 60% 40% / 40% 70% 30% 60%; }
+      100% { border-radius: 40% 60% 70% 30% / 60% 40% 50% 40%; }
     }
 
     .tool-card-visual.dark {
-      background: var(--dark);
-      box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+      background: #ffffff;
+      color: #0D0D0D;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.06);
     }
+
+    .tool-card-visual > * { position: relative; z-index: 1; }
 
     .tool-icon-large {
       font-size: 3.5rem;
@@ -636,27 +661,29 @@
       font-size: 3rem;
       line-height: 1;
       margin-bottom: 8px;
+      color: #0D0D0D;
     }
 
     .tool-card-stat-label {
       font-size: 0.9rem;
-      opacity: 0.7;
+      color: #3C4043;
       font-weight: 300;
       text-transform: uppercase;
       letter-spacing: 1px;
       line-height: 1.4;
+      opacity: 0.75;
     }
 
     .tool-card-divider {
       height: 1px;
-      background: rgba(255,255,255,0.2);
+      background: #E8E8E8;
       margin: 28px 0;
     }
 
     .tool-card-tag {
       display: inline-block;
-      background: rgba(255,255,255,0.15);
-      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(31, 151, 249, 0.1);
+      border: 1px solid rgba(31, 151, 249, 0.3);
       border-radius: 50px;
       padding: 6px 16px;
       font-family: 'Space Mono', monospace;
@@ -664,6 +691,7 @@
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
+      color: var(--blue);
     }
 
     /* Tab panel directional fade animations */
@@ -915,182 +943,215 @@
       display: flex;
       align-items: center;
       justify-content: center;
+      padding: 20px 8px 20px 24px;
     }
 
     .phone-frame {
-      width: 272px;
-      height: 508px;
+      width: 256px;
+      height: 500px;
       background: #0D0D0D;
-      border-radius: 44px;
-      border: 3px solid #2a2a2a;
-      padding: 14px;
+      border-radius: 40px;
+      padding: 10px;
       position: relative;
       flex-shrink: 0;
+      will-change: transform;
+      transform: perspective(1000px) rotateY(-8deg) rotateX(4deg);
+      animation: phone-float 4s ease-in-out infinite alternate;
+      box-shadow:
+        -10px 24px 60px rgba(0,0,0,0.55),
+        -4px 8px 20px rgba(0,0,16,0.3),
+        inset 0 1px 0 rgba(255,255,255,0.07),
+        inset 0 0 0 1px rgba(255,255,255,0.04);
     }
 
-    .phone-notch {
-      width: 88px;
-      height: 22px;
-      background: #0D0D0D;
-      border-radius: 0 0 14px 14px;
-      position: absolute;
-      top: 14px;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 10;
+    @keyframes phone-float {
+      from { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(0px); }
+      to   { transform: perspective(1000px) rotateY(-8deg) rotateX(4deg) translateY(-8px); }
     }
 
     .phone-screen {
-      background: #F5F5F5;
+      background: #fff;
       border-radius: 32px;
       height: 100%;
       overflow: hidden;
       position: relative;
-    }
-
-    .call-screen {
-      position: absolute;
-      inset: 0;
-      background: #111;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 32px 20px 28px;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 5;
-      border-radius: 32px;
     }
 
-    .call-screen.cs-visible { opacity: 1; }
+    .phone-status-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 16px 4px;
+      background: #fff;
+      flex-shrink: 0;
+      position: relative;
+      z-index: 2;
+    }
 
-    .call-avatar {
-      width: 66px;
-      height: 66px;
+    .sb-notch {
+      position: absolute;
+      top: 0; left: 50%;
+      transform: translateX(-50%);
+      width: 68px; height: 17px;
+      background: #0D0D0D;
+      border-radius: 0 0 11px 11px;
+    }
+
+    .sb-time {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      color: #0D0D0D;
+    }
+
+    .sb-icons { font-size: 0.58rem; color: #0D0D0D; letter-spacing: 0.5px; }
+
+    .phone-notif {
+      position: absolute;
+      top: 0; left: 8px; right: 8px;
+      background: rgba(248,248,248,0.97);
+      border-radius: 12px;
+      padding: 9px 11px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      z-index: 20;
+      transform: translateY(-110%);
+      opacity: 0;
+      transition: transform 0.4s cubic-bezier(0.34,1.2,0.64,1), opacity 0.3s ease;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.14);
+      margin-top: 6px;
+    }
+
+    .phone-notif.notif-in { transform: translateY(0); opacity: 1; }
+
+    .notif-icon-emoji { font-size: 1.1rem; flex-shrink: 0; }
+
+    .notif-body { flex: 1; min-width: 0; }
+
+    .notif-source {
+      display: block;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.56rem;
+      font-weight: 700;
+      color: #666;
+      margin-bottom: 2px;
+    }
+
+    .notif-detail {
+      display: block;
+      font-size: 0.62rem;
+      color: #0D0D0D;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .chat-ui {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .chat-ui.cui-show { opacity: 1; }
+
+    .chat-header-bar {
+      background: #fff;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .chat-avtr {
+      width: 28px; height: 28px;
       border-radius: 50%;
       background: var(--blue);
       color: #fff;
       font-family: 'Space Mono', monospace;
       font-weight: 700;
-      font-size: 1.25rem;
+      font-size: 0.56rem;
       display: flex;
       align-items: center;
       justify-content: center;
-      margin-bottom: 12px;
-    }
-
-    .call-name {
-      font-family: 'Space Mono', monospace;
-      font-weight: 700;
-      font-size: 1rem;
-      color: #fff;
-      margin-bottom: 5px;
-    }
-
-    .call-status {
-      font-size: 0.76rem;
-      color: rgba(255,255,255,0.5);
-      letter-spacing: 0.5px;
-      margin-bottom: 30px;
-      animation: pulse-text 1.2s infinite;
-    }
-
-    @keyframes pulse-text {
-      0%, 100% { opacity: 0.5; }
-      50% { opacity: 1; }
-    }
-
-    .call-actions { display: flex; gap: 34px; }
-
-    .call-btn {
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .call-btn-decline { background: #e53e3e; }
-    .call-btn-accept { background: #38a169; }
-    .call-btn svg { width: 20px; height: 20px; }
-
-    .missed-badge {
-      position: absolute;
-      top: 18px;
-      left: 50%;
-      transform: translateX(-50%) translateY(-8px);
-      background: #e53e3e;
-      color: #fff;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.66rem;
-      font-weight: 700;
-      letter-spacing: 0.5px;
-      padding: 5px 13px;
-      border-radius: 20px;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.35s ease, transform 0.35s ease;
-      z-index: 9;
-    }
-
-    .missed-badge.mb-visible {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
-    }
-
-    .chat-screen {
-      position: absolute;
-      inset: 0;
-      background: #F5F5F5;
-      display: flex;
-      flex-direction: column;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 4;
-      border-radius: 32px;
-    }
-
-    .chat-screen.ch-visible { opacity: 1; }
-
-    .chat-header {
-      background: #fff;
-      padding: 30px 16px 11px;
-      font-family: 'Space Mono', monospace;
-      font-weight: 700;
-      font-size: 0.78rem;
-      color: #0D0D0D;
-      border-bottom: 1px solid rgba(0,0,0,0.07);
-      text-align: center;
       flex-shrink: 0;
     }
 
-    .chat-messages {
+    .chat-cname {
+      font-family: 'Space Mono', monospace;
+      font-weight: 700;
+      font-size: 0.66rem;
+      color: #0D0D0D;
+    }
+
+    .chat-msgs {
       flex: 1;
-      padding: 13px 11px;
+      padding: 8px 9px 40px;
       display: flex;
       flex-direction: column;
-      gap: 10px;
-      overflow: hidden;
+      gap: 5px;
+      overflow-y: scroll;
+      scrollbar-width: none;
+      scroll-behavior: smooth;
     }
 
-    .msg-bubble {
-      max-width: 88%;
-      padding: 9px 12px;
-      border-radius: 16px;
-      font-size: 0.74rem;
-      line-height: 1.5;
+    .chat-msgs::-webkit-scrollbar { display: none; }
+
+    .pm-bubble {
+      max-width: 84%;
+      padding: 6px 10px;
+      border-radius: 14px;
+      font-size: 0.68rem;
+      line-height: 1.45;
       opacity: 0;
-      transform: translateY(6px);
+      transition: opacity 0.22s ease, transform 0.22s ease;
+    }
+
+    .pm-out {
+      background: var(--blue);
+      color: #fff;
+      align-self: flex-end;
+      border-bottom-right-radius: 4px;
+      transform: translateX(14px);
+    }
+
+    .pm-in {
+      background: #F0F0F0;
+      color: #0D0D0D;
+      align-self: flex-start;
+      border-bottom-left-radius: 4px;
+      transform: translateX(-14px);
+    }
+
+    .pm-bubble.bbl-show { opacity: 1; transform: translateX(0); }
+
+    .lead-pill {
+      position: absolute;
+      bottom: 12px; left: 50%;
+      transform: translateX(-50%) translateY(8px);
+      background: #166534;
+      color: #fff;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.58rem;
+      font-weight: 700;
+      padding: 6px 11px;
+      border-radius: 20px;
+      white-space: nowrap;
+      opacity: 0;
       transition: opacity 0.4s ease, transform 0.4s ease;
+      z-index: 8;
     }
 
-    .msg-bubble.msg-visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
+    .lead-pill.pill-show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
+    /* placeholder — kept for layout reference */
     .msg-business {
       background: #fff;
       color: #0D0D0D;
@@ -1104,30 +1165,6 @@
       color: #fff;
       align-self: flex-end;
       border-bottom-right-radius: 4px;
-    }
-
-    .status-pill {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%) translateY(6px);
-      background: #1a7a3c;
-      color: #fff;
-      font-family: 'Space Mono', monospace;
-      font-size: 0.62rem;
-      font-weight: 700;
-      padding: 7px 12px;
-      border-radius: 20px;
-      white-space: nowrap;
-      opacity: 0;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      z-index: 8;
-      text-align: center;
-    }
-
-    .status-pill.sp-visible {
-      opacity: 1;
-      transform: translateX(-50%) translateY(0);
     }
 
     /* ─── STATS STRIP ─── */
@@ -1145,22 +1182,46 @@
       flex: 1;
       max-width: 280px;
       padding: 8px 0 8px 26px;
-      border-left: 3px solid var(--blue);
     }
 
     .stat-number {
       display: block;
       font-family: 'Space Mono', monospace;
       font-weight: 700;
-      font-size: 2.8rem;
+      font-size: 3.5rem;
       color: #0D0D0D;
       line-height: 1.05;
-      margin-bottom: 6px;
+      margin-bottom: 4px;
+      animation: stat-pulse 3s ease-in-out infinite;
+      animation-play-state: paused;
     }
+
+    .stat-block.stat-animated .stat-number { animation-play-state: running; }
+
+    @keyframes stat-pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.75; }
+    }
+
+    #stats-strip > div:nth-child(1) .stat-number { animation-delay: 0s; }
+    #stats-strip > div:nth-child(3) .stat-number { animation-delay: 1.0s; }
+    #stats-strip > div:nth-child(5) .stat-number { animation-delay: 2.0s; }
+
+    .stat-underline {
+      display: block;
+      height: 3px;
+      background: var(--blue);
+      width: 0;
+      border-radius: 2px;
+      margin-bottom: 10px;
+      transition: width 0.8s ease-out 0.3s;
+    }
+
+    .stat-block.stat-animated .stat-underline { width: 60%; }
 
     .stat-label {
       display: block;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
       color: #3C4043;
       line-height: 1.5;
     }
@@ -1168,7 +1229,7 @@
     .stat-divider {
       width: 1px;
       height: 64px;
-      background: rgba(0,0,0,0.1);
+      background: #E8E8E8;
       margin: 0 48px;
       flex-shrink: 0;
     }
@@ -1295,12 +1356,19 @@
       .hero-divider { margin: 0 auto 28px; }
       .hero-sub { margin: 0 auto; font-size: 0.78rem; }
 
-      /* Phone: max 320px centered */
+      /* Phone: max 320px centered, no 3D tilt on mobile */
       .phone-frame {
-        width: min(272px, 78vw);
+        width: min(256px, 78vw);
         height: auto;
-        aspect-ratio: 272 / 508;
+        aspect-ratio: 256 / 500;
         max-width: 320px;
+        transform: none !important;
+        animation: phone-float-flat 4s ease-in-out infinite alternate;
+      }
+
+      @keyframes phone-float-flat {
+        from { transform: translateY(0); }
+        to   { transform: translateY(-6px); }
       }
 
       /* System tabs: horizontal scroll instead of wrap */
@@ -1333,15 +1401,17 @@
         width: 100%;
         text-align: center;
         padding: 14px 0 0 0;
-        border-left: none;
-        border-top: 3px solid var(--blue);
       }
+
+      .stat-number { font-size: 2.8rem; }
+
+      .stat-underline { margin: 4px auto 10px; }
 
       .stat-divider {
         width: 80px;
         height: 1px;
         margin: 0 auto;
-        background: rgba(0,0,0,0.1);
+        background: #E8E8E8;
       }
 
       section { padding: 80px 20px 60px; }
@@ -1439,43 +1509,34 @@
       <!-- Animated phone mockup -->
       <div class="hero-phone-wrap fade-up">
         <div class="phone-frame" id="phoneFrame">
-          <div class="phone-notch"></div>
           <div class="phone-screen">
-
-            <!-- Step 1: incoming call -->
-            <div class="call-screen" id="callScreen">
-              <div class="call-avatar">SM</div>
-              <div class="call-name">Sarah M.</div>
-              <div class="call-status" id="callStatus">Incoming Call...</div>
-              <div class="call-actions">
-                <div class="call-btn call-btn-decline">
-                  <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </div>
-                <div class="call-btn call-btn-accept">
-                  <svg viewBox="0 0 24 24" fill="#fff"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
-                </div>
+            <div class="phone-status-bar">
+              <span class="sb-time">9:41</span>
+              <div class="sb-notch"></div>
+              <span class="sb-icons">&#9646;&#9646;&#9646; &#9646;</span>
+            </div>
+            <div class="phone-notif" id="phoneNotif">
+              <span class="notif-icon-emoji">&#128245;</span>
+              <div class="notif-body">
+                <span class="notif-source">Bright Home Cleaning</span>
+                <span class="notif-detail">Missed call from Sarah M.</span>
               </div>
             </div>
-
-            <!-- Missed call badge -->
-            <div class="missed-badge" id="missedBadge">Missed Call</div>
-
-            <!-- Steps 2+3: chat screen -->
-            <div class="chat-screen" id="chatScreen">
-              <div class="chat-header">Bright Home Cleaning</div>
-              <div class="chat-messages">
-                <div class="msg-bubble msg-business" id="msgBusiness">
-                  Hi! We just missed your call. Still looking for a cleaning quote? We'd love to help &mdash; what works best for you?
-                </div>
-                <div class="msg-bubble msg-sarah" id="msgSarah">
-                  Yes! Do you have availability this week?
-                </div>
+            <div class="chat-ui" id="chatUi">
+              <div class="chat-header-bar">
+                <div class="chat-avtr">SM</div>
+                <div class="chat-cname">Sarah M.</div>
+              </div>
+              <div class="chat-msgs" id="chatMsgs">
+                <div class="pm-bubble pm-out" id="pmsg1">Hi Sarah! This is Mia from Bright Home Cleaning &mdash; we just missed your call. Still looking for a cleaning quote? Happy to help &#128522;</div>
+                <div class="pm-bubble pm-in"  id="pmsg2">Yes! I've been looking for a reliable cleaner. Do you service the Fremont area?</div>
+                <div class="pm-bubble pm-out" id="pmsg3">We do! What size is your home and how often are you looking for service?</div>
+                <div class="pm-bubble pm-in"  id="pmsg4">It's a 3BR/2BA. Probably bi-weekly would be perfect.</div>
+                <div class="pm-bubble pm-out" id="pmsg5">Perfect &mdash; I'll send over a quote shortly. Want to schedule a quick call tomorrow?</div>
+                <div class="pm-bubble pm-in"  id="pmsg6">That works! 10am is good for me.</div>
               </div>
             </div>
-
-            <!-- Step 4: status pill -->
-            <div class="status-pill" id="statusPill">&#10003; Lead Captured &mdash; Follow-up scheduled</div>
-
+            <div class="lead-pill" id="leadPill">&#10003; Lead Captured &middot; Follow-up Booked</div>
           </div>
         </div>
       </div>
@@ -1486,17 +1547,20 @@
   <!-- ─── STATS STRIP ─── -->
   <section id="stats-strip">
     <div class="stat-block fade-up">
-      <span class="stat-number" data-target="80" data-prefix="~" data-suffix="%">~80%</span>
+      <span class="stat-number" data-target="80" data-prefix="~" data-suffix="%" data-duration="1200">~80%</span>
+      <span class="stat-underline"></span>
       <span class="stat-label">of callers never leave a voicemail</span>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-block fade-up">
-      <span class="stat-number" data-target="60" data-prefix="&lt;&nbsp;" data-suffix=" sec">&lt; 60 sec</span>
+      <span class="stat-number" data-target="60" data-prefix="&lt;&nbsp;" data-suffix=" sec" data-duration="1000">&lt; 60 sec</span>
+      <span class="stat-underline"></span>
       <span class="stat-label">average text-back time</span>
     </div>
     <div class="stat-divider"></div>
     <div class="stat-block fade-up">
-      <span class="stat-number" data-target="3" data-suffix="x">3x</span>
+      <span class="stat-number" data-target="3" data-suffix="x" data-duration="800">3x</span>
+      <span class="stat-underline"></span>
       <span class="stat-label">more follow-up attempts than manual outreach</span>
     </div>
   </section>
@@ -1879,10 +1943,12 @@
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
         const el = entry.target;
+        const block = el.closest('.stat-block');
+        if (block) block.classList.add('stat-animated');
         const target = parseInt(el.dataset.target, 10);
         const prefix = el.dataset.prefix || '';
         const suffix = el.dataset.suffix || '';
-        const duration = 1200;
+        const duration = parseInt(el.dataset.duration, 10) || 1200;
         const start = performance.now();
         function tick(now) {
           const elapsed = now - start;
@@ -1901,39 +1967,41 @@
 
     // ─── Phone mockup animation ───
     (function phoneAnimation() {
-      const callScreen  = document.getElementById('callScreen');
-      const missedBadge = document.getElementById('missedBadge');
-      const chatScreen  = document.getElementById('chatScreen');
-      const msgBusiness = document.getElementById('msgBusiness');
-      const msgSarah    = document.getElementById('msgSarah');
-      const statusPill  = document.getElementById('statusPill');
-      const callStatus  = document.getElementById('callStatus');
+      const phoneNotif = document.getElementById('phoneNotif');
+      const chatUi     = document.getElementById('chatUi');
+      const chatMsgs   = document.getElementById('chatMsgs');
+      const leadPill   = document.getElementById('leadPill');
+      if (!phoneNotif) return;
 
-      if (!callScreen) return;
+      function showBubble(id) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.classList.add('bbl-show');
+        if (chatMsgs) chatMsgs.scrollTop = chatMsgs.scrollHeight;
+      }
 
       function reset() {
-        callScreen.classList.remove('cs-visible');
-        missedBadge.classList.remove('mb-visible');
-        chatScreen.classList.remove('ch-visible');
-        msgBusiness.classList.remove('msg-visible');
-        msgSarah.classList.remove('msg-visible');
-        statusPill.classList.remove('sp-visible');
-        if (callStatus) callStatus.textContent = 'Incoming Call...';
+        phoneNotif.classList.remove('notif-in');
+        if (chatUi) chatUi.classList.remove('cui-show');
+        if (leadPill) leadPill.classList.remove('pill-show');
+        ['pmsg1','pmsg2','pmsg3','pmsg4','pmsg5','pmsg6'].forEach(id => {
+          const el = document.getElementById(id);
+          if (el) el.classList.remove('bbl-show');
+        });
+        if (chatMsgs) chatMsgs.scrollTop = 0;
       }
 
       function runSequence() {
         reset();
-        setTimeout(() => callScreen.classList.add('cs-visible'), 300);
-        setTimeout(() => {
-          if (callStatus) callStatus.textContent = 'Call Ended';
-          callScreen.classList.remove('cs-visible');
-        }, 2400);
-        setTimeout(() => missedBadge.classList.add('mb-visible'), 2800);
-        setTimeout(() => chatScreen.classList.add('ch-visible'), 3600);
-        setTimeout(() => msgBusiness.classList.add('msg-visible'), 4000);
-        setTimeout(() => msgSarah.classList.add('msg-visible'), 6000);
-        setTimeout(() => statusPill.classList.add('sp-visible'), 7800);
-        setTimeout(runSequence, 11500);
+        const CS = 1600;
+        setTimeout(() => phoneNotif.classList.add('notif-in'), 200);
+        setTimeout(() => phoneNotif.classList.remove('notif-in'), 1200);
+        setTimeout(() => chatUi && chatUi.classList.add('cui-show'), CS);
+        [0, 1500, 3000, 4500, 6000, 7500].forEach((delay, i) => {
+          setTimeout(() => showBubble('pmsg' + (i + 1)), CS + delay);
+        });
+        setTimeout(() => leadPill && leadPill.classList.add('pill-show'), CS + 7500 + 1500);
+        setTimeout(runSequence, CS + 7500 + 1500 + 3000 + 500);
       }
 
       runSequence();
